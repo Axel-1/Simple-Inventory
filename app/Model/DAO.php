@@ -5,23 +5,36 @@ namespace App\Model;
 
 
 use PDO;
-use PDOException;
 
 class DAO
 {
-    protected static PDO $dbh;
+    private static PDO $dbh;
     private static string $host = "localhost";
     private static string $db = "SimpleInventory";
     private static string $user = "util";
     private static string $password = "util";
 
-    public static function init()
+    private static function getPDO(): PDO
     {
-        try {
-            self::$dbh = new PDO("mysql:host=" . self::$host . ";dbname=" . self::$db . ";charset=utf8", self::$user, self::$password);
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage();
-            die();
+        if (!isset(self::$dbh)) {
+            $pdo = new PDO("mysql:host=" . self::$host . ";dbname=" . self::$db . ";charset=utf8", self::$user, self::$password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            self::$dbh = $pdo;
         }
+        return self::$dbh;
     }
+
+    public static function query($statement): array
+    {
+        $stmt = self::getPDO()->query($statement);
+        return $stmt->fetchAll();
+    }
+
+    public static function prepare($statement, $attributes): array
+    {
+        $stmt = self::getPDO()->prepare($statement);
+        $stmt->execute($attributes);
+        return $stmt->fetchAll();
+    }
+
 }
