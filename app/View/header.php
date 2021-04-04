@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap core CSS -->
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
     <style>
@@ -26,7 +26,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="../../assets/css/dashboard.css" rel="stylesheet">
+    <link href="assets/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
 
@@ -54,37 +54,37 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link <?= $activePage == "dashboard" ? "active" : ""?>" aria-current="page" href="../Controller/mainController.php?action=dashboard">
+                        <a class="nav-link <?= $this->activePage == "dashboard" ? "active" : ""?>" aria-current="page" href="?action=dashboard">
                             <i class="bi bi-house bi-sb me-1"></i>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $activePage == "productList" ? "active" : ""?>" href="../Controller/mainController.php?action=productList">
+                        <a class="nav-link <?= $this->activePage == "productList" ? "active" : ""?>" href="?action=productList">
                             <i class="bi bi-laptop bi-sb me-1"></i>
                             Products
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $activePage == "siteList" ? "active" : ""?>" href="../Controller/mainController.php?action=siteList">
+                        <a class="nav-link <?= $this->activePage == "siteList" ? "active" : ""?>" href="?action=siteList">
                             <i class="bi bi-geo-alt bi-sb me-1"></i>
                             Sites
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $activePage == "monitoringList" ? "active" : ""?>" href="../Controller/mainController.php?action=monitoringList">
+                        <a class="nav-link <?= $this->activePage == "monitoringList" ? "active" : ""?>" href="?action=monitoringList">
                             <i class="bi bi-speedometer bi-sb me-1"></i>
                             Monitoring
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $activePage == "userList" ? "active" : ""?>" href="../Controller/mainController.php?action=userList">
+                        <a class="nav-link <?= $this->activePage == "userList" ? "active" : ""?>" href="?action=userList">
                             <i class="bi bi-people bi-sb me-1"></i>
                             Users
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $activePage == "settings" ? "active" : ""?>" href="../Controller/mainController.php?action=settings">
+                        <a class="nav-link <?= $this->activePage == "settings" ? "active" : ""?>" href="?action=settings">
                             <i class="bi bi-gear bi-sb me-1"></i>
                             Settings
                         </a>

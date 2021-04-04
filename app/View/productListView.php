@@ -3,7 +3,7 @@
 </div>
 <div class="container">
     <div class="row mb-4">
-        <?php foreach ($productList as $key => $val) { ?>
+        <?php foreach ($this->productList as $key => $val) { ?>
             <div class="col-4">
                 <div class="card mb-4">
                     <div class="card-body">
