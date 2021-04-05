@@ -35,11 +35,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><?= $val['SiteName'] ?></h5>
-                        <p class="card-text"><b>Lorem</b> ipsum</p>
+                        <p class="card-text"><?= $val['Address'] ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><?= $val['Address'] ?></li>
-                        <li class="list-group-item"><?= $val['IP'] ?></li>
+                        <li class="list-group-item"><b>IP</b>: <?= $val['IP'] ?></li>
                         <?php if ($val['Status']) { ?>
                             <li class="list-group-item text-success">Site is <b>UP</b></li>
                         <?php } else { ?>
