@@ -4,8 +4,6 @@
 namespace App\Model;
 
 
-use PDO;
-
 class SiteDAO extends DAO
 {
     public static function getAll(): array
@@ -20,7 +18,7 @@ class SiteDAO extends DAO
 
     public static function getSiteByID(int $siteID): Site
     {
-        $rs = self::prepare("SELECT * FROM Site WHERE ID_site = :siteID", array(":siteID"=>$siteID));
+        $rs = self::prepare("SELECT * FROM Site WHERE ID_site = :siteID", array(":siteID" => $siteID));
         return new Site($rs[0]['ID_site'], $rs[0]['Nom_site'], $rs[0]['Adresse'], $rs[0]['Ville'], $rs[0]['CP'], MonitoringDAO::getMonitoringByID($rs[0]['ID_supervision']));
     }
 }

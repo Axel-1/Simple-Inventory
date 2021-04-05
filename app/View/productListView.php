@@ -15,7 +15,8 @@
                         <li class="list-group-item"><b>Purchase date</b>: <?= $val['PurchaseDate'] ?></li>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="btn btn-primary">More info</a>
+                        <a href="?action=productDetails&productID=<?= $val['ProductID'] ?>" class="btn btn-primary">More
+                            info</a>
                     </div>
                 </div>
             </div>

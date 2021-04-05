@@ -6,7 +6,7 @@
         <div class="col">
             <div class="card border-primary">
                 <div class="card-body">
-                    <h1 class="card-title text-center"><?=$this->productCount?></h1>
+                    <h1 class="card-title text-center"><?= $this->productCount ?></h1>
                     <p class="card-text text-center">Products in inventory</p>
                 </div>
             </div>
@@ -14,7 +14,7 @@
         <div class="col">
             <div class="card border-success">
                 <div class="card-body">
-                    <h1 class="card-title text-center"><?=$this->monitProductCount?></h1>
+                    <h1 class="card-title text-center"><?= $this->monitProductCount ?></h1>
                     <p class="card-text text-center">Products monitored</p>
                 </div>
             </div>
@@ -22,29 +22,29 @@
         <div class="col">
             <div class="card border-danger">
                 <div class="card-body">
-                    <h1 class="card-title text-center"><?=$this->productDownCount?></h1>
+                    <h1 class="card-title text-center"><?= $this->productDownCount ?></h1>
                     <p class="card-text text-center">Products that are not responding</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <?php foreach ($this->dashSiteList as $key => $val) {?>
+    <?php foreach ($this->dashSiteList as $key => $val) { ?>
         <div class="row mb-4">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $val['SiteName']?></h5>
+                        <h5 class="card-title"><?= $val['SiteName'] ?></h5>
                         <p class="card-text"><b>Lorem</b> ipsum</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><?= $val['Address']?></li>
-                        <li class="list-group-item"><?= $val['IP']?></li>
-                        <?php if ($val['Status']) {?>
+                        <li class="list-group-item"><?= $val['Address'] ?></li>
+                        <li class="list-group-item"><?= $val['IP'] ?></li>
+                        <?php if ($val['Status']) { ?>
                             <li class="list-group-item text-success">Site is <b>UP</b></li>
-                        <?php } else {?>
+                        <?php } else { ?>
                             <li class="list-group-item text-danger">Site is <b>Down</b></li>
-                        <?php }?>
+                        <?php } ?>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="btn btn-primary">More info</a>

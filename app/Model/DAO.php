@@ -14,6 +14,12 @@ class DAO
     private static string $user = "util";
     private static string $password = "util";
 
+    public static function query($statement): array
+    {
+        $stmt = self::getPDO()->query($statement);
+        return $stmt->fetchAll();
+    }
+
     private static function getPDO(): PDO
     {
         if (!isset(self::$dbh)) {
@@ -22,12 +28,6 @@ class DAO
             self::$dbh = $pdo;
         }
         return self::$dbh;
-    }
-
-    public static function query($statement): array
-    {
-        $stmt = self::getPDO()->query($statement);
-        return $stmt->fetchAll();
     }
 
     public static function prepare($statement, $attributes): array

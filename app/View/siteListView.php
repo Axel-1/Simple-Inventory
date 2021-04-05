@@ -12,11 +12,11 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><b>IP</b>: <?= $val['IP'] ?></li>
-                        <?php if ($val['Status']) {?>
+                        <?php if ($val['Status']) { ?>
                             <li class="list-group-item text-success">Site is <b>UP</b></li>
-                        <?php } else {?>
+                        <?php } else { ?>
                             <li class="list-group-item text-danger">Site is <b>Down</b></li>
-                        <?php }?>
+                        <?php } ?>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="btn btn-primary">More info</a>

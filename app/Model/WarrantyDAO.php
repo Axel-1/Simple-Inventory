@@ -4,8 +4,6 @@
 namespace App\Model;
 
 
-use PDO;
-
 class WarrantyDAO extends DAO
 {
     public static function getAll(): array

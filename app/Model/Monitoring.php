@@ -3,6 +3,7 @@
 
 namespace App\Model;
 
+use DateInterval;
 use DateTime;
 
 final class Monitoring
@@ -24,10 +25,10 @@ final class Monitoring
         $this->lastPing = $lastPing;
     }
 
-    public function isUp() : bool
+    public function isUp(): bool
     {
         $now = new DateTime("now");
-        $now->sub(\DateInterval::createFromDateString("5 minutes"));
+        $now->sub(DateInterval::createFromDateString("5 minutes"));
         if ($this->lastPing < $now) {
             return false;
         } else {

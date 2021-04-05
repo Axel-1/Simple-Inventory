@@ -3,8 +3,6 @@
 
 namespace App\Model;
 
-use PDO;
-
 class MonitoringDAO extends DAO
 {
     public static function getAll(): array
@@ -21,6 +19,16 @@ class MonitoringDAO extends DAO
     {
         $rs = self::prepare("SELECT * FROM Supervision WHERE ID_supervision = :monitID", array(":monitID" => $monitID));
         return new Monitoring($rs[0]['ID_supervision'], $rs[0]['IP'], date_create($rs[0]['Date_dernier_ping']));
+    }
+
+    public static function getMonitoringByProductID(int $productID): ?Monitoring
+    {
+        $rs = self::prepare("SELECT Supervision.* FROM Supervision JOIN Produit ON Supervision.ID_supervision = Produit.ID_supervision WHERE ID_produit = :productID", array(":productID" => $productID));
+        if (empty($rs)) {
+            return null;
+        } else {
+            return new Monitoring($rs[0]['ID_supervision'], $rs[0]['IP'], date_create($rs[0]['Date_dernier_ping']));
+        }
     }
 
     public static function getAllProductMonitoring(): array

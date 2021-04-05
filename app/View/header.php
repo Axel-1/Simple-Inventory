@@ -32,7 +32,9 @@
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Simple Inventory</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
@@ -54,37 +56,43 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link <?= $this->activePage == "dashboard" ? "active" : ""?>" aria-current="page" href="?action=dashboard">
+                        <a class="nav-link <?= $this->activePage == "dashboard" ? "active" : "" ?>" aria-current="page"
+                           href="?action=dashboard">
                             <i class="bi bi-house bi-sb me-1"></i>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $this->activePage == "productList" ? "active" : ""?>" href="?action=productList">
+                        <a class="nav-link <?= $this->activePage == "productList" ? "active" : "" ?>"
+                           href="?action=productList">
                             <i class="bi bi-laptop bi-sb me-1"></i>
                             Products
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $this->activePage == "siteList" ? "active" : ""?>" href="?action=siteList">
+                        <a class="nav-link <?= $this->activePage == "siteList" ? "active" : "" ?>"
+                           href="?action=siteList">
                             <i class="bi bi-geo-alt bi-sb me-1"></i>
                             Sites
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $this->activePage == "monitoringList" ? "active" : ""?>" href="?action=monitoringList">
+                        <a class="nav-link <?= $this->activePage == "monitoringList" ? "active" : "" ?>"
+                           href="?action=monitoringList">
                             <i class="bi bi-speedometer bi-sb me-1"></i>
                             Monitoring
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $this->activePage == "userList" ? "active" : ""?>" href="?action=userList">
+                        <a class="nav-link <?= $this->activePage == "userList" ? "active" : "" ?>"
+                           href="?action=userList">
                             <i class="bi bi-people bi-sb me-1"></i>
                             Users
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $this->activePage == "settings" ? "active" : ""?>" href="?action=settings">
+                        <a class="nav-link <?= $this->activePage == "settings" ? "active" : "" ?>"
+                           href="?action=settings">
                             <i class="bi bi-gear bi-sb me-1"></i>
                             Settings
                         </a>

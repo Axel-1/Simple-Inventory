@@ -9,11 +9,11 @@ use App\Model\SiteDAO;
 
 class DashboardController
 {
+    private static DashboardController $_instance;
     private int $productCount;
     private int $monitProductCount;
     private int $productDownCount;
     private array $dashSiteList;
-    private static DashboardController $_instance;
     private string $activePage;
 
     /**
@@ -41,7 +41,7 @@ class DashboardController
         $this->productDownCount = 0;
         foreach ($phyProdCollection as $key => $val) {
             if ($val->getProductMonitoring() != null) {
-                if(!$val->getProductMonitoring()->isUp()) {
+                if (!$val->getProductMonitoring()->isUp()) {
                     $this->productDownCount++;
                 }
             }
@@ -58,8 +58,7 @@ class DashboardController
 
     public static function getInstance(): DashboardController
     {
-        if(!isset(self::$_instance))
-        {
+        if (!isset(self::$_instance)) {
             self::$_instance = new self();
         }
         return self::$_instance;
