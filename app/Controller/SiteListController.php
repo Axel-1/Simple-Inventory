@@ -14,8 +14,9 @@ class SiteListController
 
     private function __construct()
     {
+        // Retrieving data from the database and instantiating objects
         $siteCollection = SiteDAO::getAll();
-
+        // Preparing the data that will be sent to the view
         $this->siteList = array();
         foreach ($siteCollection as $key => $val) {
             $this->siteList[] = array('SiteName' => $val->getSiteName(),

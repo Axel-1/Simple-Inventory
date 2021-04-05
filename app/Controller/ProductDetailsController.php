@@ -20,21 +20,28 @@ class ProductDetailsController
 
     private function __construct(int $productID)
     {
+        // Retrieving data from the database and instantiating objects
         $product = ProductDAO::getProductByID($productID);
+
         if ($product instanceof PhysicalProduct) {
+            // Retrieving data from the database and instantiating objects
             $warrantiesCollection = WarrantyDAO::getWarrantyByProductID($productID);
+            // List of warranties
             foreach ($warrantiesCollection as $key => $val) {
                 $this->warrantiesList[] = array('WarrantyName' => $val->getWarrantyName(),
                     'ExpDate' => $val->getExpirationDate()->format("Y-m-d"));
             }
 
+            // Retrieving data from the database and instantiating objects
             $monitoring = MonitoringDAO::getMonitoringByProductID($productID);
+            // Monitoring details
             if (!is_null($monitoring)) {
                 $this->monitoringDetails = array('IP' => $monitoring->getIP(),
                     'LastPing' => $monitoring->getLastPing()->format("Y-m-d h:i A"),
                     'Status' => $monitoring->isUp());
             }
 
+            // Preparing the data that will be sent to the view
             $this->productDetails = array('ProductName' => $product->getProductName(),
                 'Manufacturer' => $product->getManufacturer(),
                 'ModelNo' => $product->getModelNo(),
@@ -46,6 +53,7 @@ class ProductDetailsController
                 'Warranties' => isset($this->warrantiesList) ? $this->warrantiesList : null,
                 'Monitoring' => isset($this->monitoringDetails) ? $this->monitoringDetails : null);
         } elseif ($product instanceof DigitalProduct) {
+            // Preparing the data that will be sent to the view
             $this->productDetails = array('ProductName' => $product->getProductName(),
                 'Manufacturer' => $product->getManufacturer(),
                 'ModelNo' => $product->getModelNo(),

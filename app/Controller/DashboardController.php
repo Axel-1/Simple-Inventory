@@ -16,12 +16,9 @@ class DashboardController
     private array $dashSiteList;
     private string $activePage;
 
-    /**
-     * DashboardControllerOO constructor.
-     */
     private function __construct()
     {
-        // Objects instantiations from database
+        // Retrieving data from the database and instantiating objects
         $siteCollection = SiteDAO::getAll();
         $productCollection = ProductDAO::getAll();
         $phyProdCollection = ProductDAO::getProductByType("p");

@@ -14,8 +14,9 @@ class ProductListController
 
     private function __construct()
     {
+        // Retrieving data from the database and instantiating objects
         $productCollection = ProductDAO::getAll();
-
+        // Preparing the data that will be sent to the view
         $this->productList = array();
         foreach ($productCollection as $key => $val) {
             $this->productList[] = array('ProductName' => $val->getProductName(),

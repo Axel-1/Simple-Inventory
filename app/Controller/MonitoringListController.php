@@ -14,8 +14,10 @@ class MonitoringListController
 
     private function __construct()
     {
+        // Retrieving data from the database and instantiating objects
         $monitoringCollection = MonitoringDAO::getAllProductMonitoring();
 
+        // List of monitoring
         $this->monitoringList = array();
         foreach ($monitoringCollection as $key => $val) {
             $this->monitoringList[] = array('IP' => $val->getIP(),
