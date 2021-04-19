@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-use App\Model\MonitoringDAO;
+use App\Model\ProductDAO;
 
 class MonitoringListController
 {
@@ -15,14 +15,16 @@ class MonitoringListController
     private function __construct()
     {
         // Retrieving data from the database and instantiating objects
-        $monitoringCollection = MonitoringDAO::getAllProductMonitoring();
+        $monitProdCollection = ProductDAO::getMonitoredProducts();
 
         // List of monitoring
         $this->monitoringList = array();
-        foreach ($monitoringCollection as $key => $val) {
-            $this->monitoringList[] = array('IP' => $val->getIP(),
-                'LastPing' => $val->getLastPing()->format("Y-m-d h:i A"),
-                'Status' => $val->isUp());
+        foreach ($monitProdCollection as $key => $val) {
+            $this->monitoringList[] = array('ProductName' => $val->getProductName(),
+                'ProductID' => $val->getProductID(),
+                'IP' => $val->getProductMonitoring()->getIP(),
+                'LastPing' => $val->getProductMonitoring()->getLastPing()->format("Y-m-d h:i A"),
+                'Status' => $val->getProductMonitoring()->isUp());
         }
     }
 

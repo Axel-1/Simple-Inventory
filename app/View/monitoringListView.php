@@ -7,7 +7,8 @@
             <div class="col-4">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $val['IP'] ?></h5>
+                        <h5 class="card-title"><a href="?action=productDetails&productID=<?= $val['ProductID'] ?>" class="link-primary text-decoration-none"><?= $val['ProductName'] ?></a></h5>
+                        <p class="card-subtitle"><?= $val['IP'] ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><b>Last Ping</b>: <?= $val['LastPing'] ?></li>
@@ -17,9 +18,6 @@
                             <li class="list-group-item text-danger">Site is <b>Down</b></li>
                         <?php } ?>
                     </ul>
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary">More info</a>
-                    </div>
                 </div>
             </div>
         <?php } ?>

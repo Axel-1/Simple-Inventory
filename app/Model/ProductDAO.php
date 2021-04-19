@@ -43,4 +43,14 @@ class ProductDAO extends DAO
         }
         return $productCollection;
     }
+
+    public static function getMonitoredProducts(): array
+    {
+        $productCollection = array();
+        $rs = self::query("SELECT * FROM Produit WHERE ID_supervision IS NOT NULL");
+        foreach ($rs as $key => $val) {
+            $productCollection[$val['ID_produit']] = new PhysicalProduct($val['ID_produit'], $val['Nom_produit'], $val['Fabricant'], $val['Num_modele'], $val['Num_serie'], date_create($val['Date_achat']), $val['Chemin_facture'], $val['Nom_hote'], WarrantyDAO::getWarrantyByProductID($val['ID_produit']), RoomDAO::getRoomByID($val['ID_piece']), ($val['ID_supervision'] == null ? null : MonitoringDAO::getMonitoringByID($val['ID_supervision'])));
+        }
+        return $productCollection;
+    }
 }
