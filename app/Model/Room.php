@@ -23,6 +23,11 @@ final class Room
         $this->site = $site;
     }
 
+    public function persist(): void
+    {
+        RoomDAO::updateRoom($this);
+    }
+
     /**
      * @return string
      */

@@ -24,6 +24,11 @@ final class Warranty
         $this->expirationDate = $expirationDate;
     }
 
+    public function persist(): void
+    {
+        WarrantyDAO::updateWarranty($this);
+    }
+
     /**
      * @return string
      */

@@ -14,7 +14,7 @@ class DAO
     private static string $user = "util";
     private static string $password = "util";
 
-    public static function query($statement): array
+    protected static function query($statement): array
     {
         $stmt = self::getPDO()->query($statement);
         return $stmt->fetchAll();
@@ -30,11 +30,16 @@ class DAO
         return self::$dbh;
     }
 
-    public static function prepare($statement, $attributes): array
+    protected static function prepare($statement, $attributes): array
     {
         $stmt = self::getPDO()->prepare($statement);
         $stmt->execute($attributes);
         return $stmt->fetchAll();
     }
 
+    protected static function update($statement, $attributes): void
+    {
+        $stmt = self::getPDO()->prepare($statement);
+        $stmt->execute($attributes);
+    }
 }

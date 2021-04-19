@@ -30,4 +30,10 @@ class MonitoringDAO extends DAO
         }
         return $monitCollection;
     }
+
+    public static function updateMonitoring(Monitoring $monitoring): void
+    {
+        $monitoringAttributes = array(':IP' => $monitoring->getIP(), ':monitID' => $monitoring->getMonitID());
+        self::update("UPDATE Supervision SET IP = :IP WHERE ID_supervision = :monitID", $monitoringAttributes);
+    }
 }

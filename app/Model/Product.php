@@ -36,6 +36,11 @@ abstract class Product
         $this->billPath = $billPath;
     }
 
+    public function persist(): void
+    {
+        ProductDAO::updateProduct($this);
+    }
+
     /**
      * @return string
      */

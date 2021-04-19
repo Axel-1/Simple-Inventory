@@ -32,12 +32,25 @@ final class Site
         $this->monitoring = $monitoring;
     }
 
+    public function persist(): void
+    {
+        SiteDAO::updateSite($this);
+    }
+
     /**
      * @return int
      */
     public function getSiteID(): int
     {
         return $this->siteID;
+    }
+
+    /**
+     * @param int $siteID
+     */
+    public function setSiteID(int $siteID): void
+    {
+        $this->siteID = $siteID;
     }
 
     /**
@@ -49,11 +62,27 @@ final class Site
     }
 
     /**
+     * @param string $siteName
+     */
+    public function setSiteName(string $siteName): void
+    {
+        $this->siteName = $siteName;
+    }
+
+    /**
      * @return string
      */
     public function getStreet(): string
     {
         return $this->street;
+    }
+
+    /**
+     * @param string $street
+     */
+    public function setStreet(string $street): void
+    {
+        $this->street = $street;
     }
 
     /**
@@ -65,6 +94,14 @@ final class Site
     }
 
     /**
+     * @param string $city
+     */
+    public function setCity(string $city): void
+    {
+        $this->city = $city;
+    }
+
+    /**
      * @return string
      */
     public function getZipCode(): string
@@ -73,11 +110,27 @@ final class Site
     }
 
     /**
+     * @param string $zipCode
+     */
+    public function setZipCode(string $zipCode): void
+    {
+        $this->zipCode = $zipCode;
+    }
+
+    /**
      * @return Monitoring
      */
     public function getMonitoring(): Monitoring
     {
         return $this->monitoring;
+    }
+
+    /**
+     * @param Monitoring $monitoring
+     */
+    public function setMonitoring(Monitoring $monitoring): void
+    {
+        $this->monitoring = $monitoring;
     }
 
 }

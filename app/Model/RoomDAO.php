@@ -31,4 +31,10 @@ class RoomDAO extends DAO
         }
         return $roomCollection;
     }
+
+    public static function updateRoom(Room $room): void
+    {
+        $roomAttributes = array(':roomName' => $room->getRoomName(), ':roomID' => $room->getRoomID());
+        self::update("UPDATE Piece SET Nom_piece = :roomName WHERE ID_piece = :roomID", $roomAttributes);
+    }
 }

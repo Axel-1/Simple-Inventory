@@ -31,4 +31,12 @@ class WarrantyDAO extends DAO
         }
         return $warrantyCollection;
     }
+
+    public static function updateWarranty(Warranty $warranty): void
+    {
+        $warrantyAttributes = array(':warrantyName' => $warranty->getWarrantyName(),
+            ':expirationDate' => $warranty->getExpirationDate()->format("Y-m-d"),
+            ':warrantyID' => $warranty->getWarrantyID());
+        self::update("UPDATE Garantie SET Nom_garantie = :warrantyName, Date_expiration = :expirationDate WHERE ID_garantie = :warrantyID", $warrantyAttributes);
+    }
 }

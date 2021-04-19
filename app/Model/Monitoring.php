@@ -36,6 +36,11 @@ final class Monitoring
         }
     }
 
+    public function persist(): void
+    {
+        MonitoringDAO::updateMonitoring($this);
+    }
+
     /**
      * @return string
      */

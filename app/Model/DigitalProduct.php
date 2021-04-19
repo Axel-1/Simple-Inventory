@@ -38,6 +38,14 @@ final class DigitalProduct extends Product
     }
 
     /**
+     * @param bool $activated
+     */
+    public function setActivated(bool $activated): void
+    {
+        $this->activated = $activated;
+    }
+
+    /**
      * @return DateTime
      */
     public function getExpirationDate(): DateTime

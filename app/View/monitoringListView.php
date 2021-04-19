@@ -7,7 +7,9 @@
             <div class="col-4">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="?action=productDetails&productID=<?= $val['ProductID'] ?>" class="link-primary text-decoration-none"><?= $val['ProductName'] ?></a></h5>
+                        <h5 class="card-title"><a href="?action=productDetails&productID=<?= $val['ProductID'] ?>"
+                                                  class="link-primary text-decoration-none"><?= $val['ProductName'] ?></a>
+                        </h5>
                         <p class="card-subtitle"><?= $val['IP'] ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
