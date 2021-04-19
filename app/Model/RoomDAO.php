@@ -21,4 +21,14 @@ class RoomDAO extends DAO
         $rs = self::prepare("SELECT * FROM Piece WHERE ID_piece = :roomID", array(":roomID" => $roomID));
         return new Room($rs[0]['ID_piece'], $rs[0]['Nom_piece'], SiteDAO::getSiteByID($rs[0]['ID_site']));
     }
+
+    public static function getRoomBySiteID(int $siteID): array
+    {
+        $roomCollection = array();
+        $rs = self::prepare("SELECT * FROM Piece WHERE ID_site = :siteID", array(":siteID" => $siteID));
+        foreach ($rs as $key => $val) {
+            $roomCollection[$val['ID_piece']] = new Room($val['ID_piece'], $val['Nom_piece'], SiteDAO::getSiteByID($val['ID_site']));
+        }
+        return $roomCollection;
+    }
 }

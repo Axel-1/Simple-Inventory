@@ -47,7 +47,7 @@ class DashboardController
         // List of site
         $this->dashSiteList = array();
         foreach ($siteCollection as $key => $val) {
-            $this->dashSiteList[] = array('SiteName' => $val->getSiteName(),
+            $this->dashSiteList[] = array('SiteID' => $val->getSiteID(), 'SiteName' => $val->getSiteName(),
                 'Address' => $val->getStreet() . ", " . $val->getZipCode() . " " . $val->getCity(),
                 'IP' => $val->getMonitoring()->getIP(), 'Status' => $val->getMonitoring()->isUp());
         }

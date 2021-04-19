@@ -46,7 +46,7 @@
                         <?php } ?>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="btn btn-primary">More info</a>
+                        <a href="?action=siteDetails&siteID=<?= $val['SiteID'] ?>" class="btn btn-primary">More info</a>
                     </div>
                 </div>
             </div>

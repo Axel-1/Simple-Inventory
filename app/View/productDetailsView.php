@@ -1,5 +1,6 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Product details</h1>
+    <h1 class="h2"><a href="?action=productList" class="link-secondary text-decoration-none">Products</a> / Product
+        details</h1>
 </div>
 <div class="container">
     <div class="row mb-4">

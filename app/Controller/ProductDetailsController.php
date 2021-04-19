@@ -5,10 +5,8 @@ namespace App\Controller;
 
 
 use App\Model\DigitalProduct;
-use App\Model\MonitoringDAO;
 use App\Model\PhysicalProduct;
 use App\Model\ProductDAO;
-use App\Model\WarrantyDAO;
 
 class ProductDetailsController
 {
@@ -25,7 +23,7 @@ class ProductDetailsController
 
         if ($product instanceof PhysicalProduct) {
             // Retrieving data from the database and instantiating objects
-            $warrantiesCollection = WarrantyDAO::getWarrantyByProductID($productID);
+            $warrantiesCollection = $product->getWarranties();
             // List of warranties
             foreach ($warrantiesCollection as $key => $val) {
                 $this->warrantiesList[] = array('WarrantyName' => $val->getWarrantyName(),
@@ -33,7 +31,7 @@ class ProductDetailsController
             }
 
             // Retrieving data from the database and instantiating objects
-            $monitoring = MonitoringDAO::getMonitoringByProductID($productID);
+            $monitoring = $product->getProductMonitoring();
             // Monitoring details
             if (!is_null($monitoring)) {
                 $this->monitoringDetails = array('IP' => $monitoring->getIP(),

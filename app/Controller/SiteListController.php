@@ -19,7 +19,7 @@ class SiteListController
         // Preparing the data that will be sent to the view
         $this->siteList = array();
         foreach ($siteCollection as $key => $val) {
-            $this->siteList[] = array('SiteName' => $val->getSiteName(),
+            $this->siteList[] = array('SiteID' => $val->getSiteID(), 'SiteName' => $val->getSiteName(),
                 'Address' => $val->getStreet() . ", " . $val->getZipCode() . " " . $val->getCity(),
                 'IP' => $val->getMonitoring()->getIP(), 'Status' => $val->getMonitoring()->isUp());
         }

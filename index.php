@@ -21,6 +21,9 @@ switch ($action) {
     case "productDetails" :
         ProductDetailsController::getInstance($_GET['productID'])->render();
         break;
+    case "siteDetails" :
+        SiteDetailsController::getInstance($_GET['siteID'])->render();
+        break;
     default :
         DashboardController::getInstance()->render();
         break;
