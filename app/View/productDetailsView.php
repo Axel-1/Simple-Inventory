@@ -32,6 +32,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="card-body">
+                    <a href="?action=productEdit&productID=<?= $this->productDetails['ProductID'] ?>"
+                       class="btn btn-primary">Edit</a>
+                </div>
             </div>
         </div>
     </div>

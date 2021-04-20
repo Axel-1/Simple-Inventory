@@ -45,11 +45,27 @@ final class PhysicalProduct extends Product
     }
 
     /**
+     * @param string $hostname
+     */
+    public function setHostname(string $hostname): void
+    {
+        $this->hostname = $hostname;
+    }
+
+    /**
      * @return array
      */
     public function getWarranties(): array
     {
         return $this->warranties;
+    }
+
+    /**
+     * @param array $warranties
+     */
+    public function setWarranties(array $warranties): void
+    {
+        $this->warranties = $warranties;
     }
 
     /**
@@ -61,11 +77,27 @@ final class PhysicalProduct extends Product
     }
 
     /**
+     * @param Room $productRoom
+     */
+    public function setProductRoom(Room $productRoom): void
+    {
+        $this->productRoom = $productRoom;
+    }
+
+    /**
      * @return Monitoring|null
      */
     public function getProductMonitoring(): ?Monitoring
     {
         return $this->productMonitoring;
+    }
+
+    /**
+     * @param Monitoring|null $productMonitoring
+     */
+    public function setProductMonitoring(?Monitoring $productMonitoring): void
+    {
+        $this->productMonitoring = $productMonitoring;
     }
 
 }

@@ -6,7 +6,11 @@ namespace App\Controller;
 
 require "vendor/autoload.php";
 
-$action = $_GET['action'];
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+} else {
+    $action = "default";
+}
 
 switch ($action) {
     case "productList" :
@@ -19,7 +23,13 @@ switch ($action) {
         MonitoringListController::getInstance()->render();
         break;
     case "productDetails" :
-        ProductDetailsController::getInstance($_GET['productID'])->render();
+        ProductController::getInstance($_GET['productID'])->details();
+        break;
+    case "productEdit" :
+        ProductController::getInstance($_GET['productID'])->edit();
+        break;
+    case "productEditSave" :
+        ProductController::getInstance($_GET['productID'])->save();
         break;
     case "siteDetails" :
         SiteDetailsController::getInstance($_GET['siteID'])->render();

@@ -64,10 +64,8 @@ class ProductDAO extends DAO
                 ':purchaseDate' => $product->getPurchaseDate()->format("Y-m-d"),
                 ':billPath' => $product->getBillPath(),
                 ':hostname' => $product->getHostname(),
-                ':roomID' => $product->getProductRoom()->getRoomID(),
-                ':monitoringID' => $product->getProductMonitoring()->getMonitID(),
                 ':productID' => $product->getProductID());
-            self::update("UPDATE Produit SET Nom_produit = :productName, Fabricant = :manufacturer, Num_modele = :modelNo, Num_serie = :serialNo, Date_achat = :purchaseDate, Chemin_facture = :billPath, Nom_hote = :hostname, ID_piece = :roomID, ID_supervision = :monitoringID WHERE ID_produit = :productID", $productAttributes);
+            self::update("UPDATE Produit SET Nom_produit = :productName, Fabricant = :manufacturer, Num_modele = :modelNo, Num_serie = :serialNo, Date_achat = :purchaseDate, Chemin_facture = :billPath, Nom_hote = :hostname WHERE ID_produit = :productID", $productAttributes);
         } elseif ($product instanceof DigitalProduct) {
             $productAttributes = array(':productName' => $product->getProductName(),
                 ':manufacturer' => $product->getManufacturer(),
