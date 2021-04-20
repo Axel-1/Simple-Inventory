@@ -7,7 +7,12 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><?= $this->siteDetails['SiteName'] ?></h5>
-                    <p class="card-subtitle"><?= $this->siteDetails['Address'] ?></p>
+                    <p class="card-subtitle"><?= $this->siteDetails['Street'] ?>
+                        , <?= $this->siteDetails['ZipCode'] ?> <?= $this->siteDetails['City'] ?></p>
+                </div>
+                <div class="card-body">
+                    <a href="?action=siteEdit&siteID=<?= $this->siteDetails['SiteID'] ?>"
+                       class="btn btn-primary">Edit</a>
                 </div>
             </div>
         </div>

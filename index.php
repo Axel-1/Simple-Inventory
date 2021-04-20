@@ -32,7 +32,13 @@ switch ($action) {
         ProductController::getInstance($_GET['productID'])->save();
         break;
     case "siteDetails" :
-        SiteDetailsController::getInstance($_GET['siteID'])->render();
+        SiteController::getInstance($_GET['siteID'])->details();
+        break;
+    case "siteEdit" :
+        SiteController::getInstance($_GET['siteID'])->edit();
+        break;
+    case "siteEditSave" :
+        SiteController::getInstance($_GET['siteID'])->save();
         break;
     default :
         DashboardController::getInstance()->render();
