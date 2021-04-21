@@ -11,7 +11,7 @@
                     <p class="card-subtitle"><?= $this->productDetails['Type'] == "Digital" ? "Expire on: " . $this->productDetails['ExpDate'] : $this->productDetails['Hostname'] ?></p>
                 </div>
                 <div class="container">
-                    <div class="row mb-4">
+                    <div class="row mb-1">
                         <div class="col">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
@@ -41,13 +41,13 @@
     </div>
     <?php if ($this->productDetails['Type'] == "Physical") { ?>
         <div class="row mb-4">
-            <?php if (!is_null($this->productDetails['Warranties'])) { ?>
-                <div class="col-6">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h4>Warranty</h4>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+            <div class="col-6">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h4>Warranty</h4>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <?php if (!is_null($this->productDetails['Warranties'])) { ?>
                             <?php foreach ($this->productDetails['Warranties'] as $key => $val) { ?>
                                 <div class="card mb-4">
                                     <div class="card-body">
@@ -61,17 +61,17 @@
                                     </div>
                                 </div>
                             <?php } ?>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
-            <?php } ?>
-            <?php if (!is_null($this->productDetails['Monitoring'])) { ?>
-                <div class="col-6">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h4>Monitoring</h4>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+            </div>
+            <div class="col-6">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h4>Monitoring</h4>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <?php if (!is_null($this->productDetails['Monitoring'])) { ?>
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $this->productDetails['Monitoring']['IP'] ?></h5>
@@ -86,13 +86,14 @@
                                     <?php } ?>
                                 </ul>
                                 <div class="card-body">
-                                    <a href="#" class="btn btn-primary">More info</a>
+                                    <a href="?action=monitEdit&monitID=<?= $this->productDetails['Monitoring']['MonitID'] ?>&productID=<?= $this->productDetails['ProductID'] ?>"
+                                       class="btn btn-primary">Edit</a>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
-            <?php } ?>
+            </div>
         </div>
     <?php } ?>
 </div>

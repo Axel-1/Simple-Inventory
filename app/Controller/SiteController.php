@@ -35,6 +35,7 @@ class SiteController
             'Street' => $this->site->getStreet(),
             'ZipCode' => $this->site->getZipCode(),
             'City' => $this->site->getCity(),
+            'MonitID' => $this->site->getMonitoring()->getMonitID(),
             'IP' => $this->site->getMonitoring()->getIP(),
             'Status' => $this->site->getMonitoring()->isUp(),
             'LastPing' => $this->site->getMonitoring()->getLastPing()->format("Y-m-d h:i A"),

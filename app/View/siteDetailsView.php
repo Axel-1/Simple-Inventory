@@ -55,6 +55,10 @@
                                 <li class="list-group-item text-danger">Site is <b>Down</b></li>
                             <?php } ?>
                         </ul>
+                        <div class="card-body">
+                            <a href="?action=monitEdit&monitID=<?= $this->siteDetails['MonitID'] ?>&siteID=<?= $this->siteDetails['SiteID'] ?>"
+                               class="btn btn-primary">Edit</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -36,7 +36,8 @@ class ProductController
             $monitoring = $this->product->getProductMonitoring();
             // Monitoring details
             if (!is_null($monitoring)) {
-                $this->monitoringDetails = array('IP' => $monitoring->getIP(),
+                $this->monitoringDetails = array('MonitID' => $monitoring->getMonitID(),
+                    'IP' => $monitoring->getIP(),
                     'LastPing' => $monitoring->getLastPing()->format("Y-m-d h:i A"),
                     'Status' => $monitoring->isUp());
             }

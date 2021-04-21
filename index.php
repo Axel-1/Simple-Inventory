@@ -40,6 +40,12 @@ switch ($action) {
     case "siteEditSave" :
         SiteController::getInstance($_GET['siteID'])->save();
         break;
+    case "monitEdit" :
+        MonitoringController::getInstance()->edit();
+        break;
+    case "monitEditSave" :
+        MonitoringController::getInstance()->save();
+        break;
     default :
         DashboardController::getInstance()->render();
         break;
