@@ -57,7 +57,8 @@
                                         <li class="list-group-item"><b>Expiration date</b>: <?= $val['ExpDate'] ?></li>
                                     </ul>
                                     <div class="card-body">
-                                        <a href="#" class="btn btn-primary">More info</a>
+                                        <a href="?action=warrantyEdit&warrantyID=<?= $val['WarrantyID'] ?>&productID=<?= $this->productDetails['ProductID'] ?>"
+                                           class="btn btn-primary">Edit</a>
                                     </div>
                                 </div>
                             <?php } ?>

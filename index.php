@@ -46,6 +46,12 @@ switch ($action) {
     case "monitEditSave" :
         MonitoringController::getInstance()->save();
         break;
+    case "warrantyEdit" :
+        WarrantyController::getInstance()->edit();
+        break;
+    case "warrantyEditSave" :
+        WarrantyController::getInstance()->save();
+        break;
     default :
         DashboardController::getInstance()->render();
         break;

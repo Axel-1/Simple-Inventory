@@ -28,7 +28,8 @@ class ProductController
             $warrantiesCollection = $this->product->getWarranties();
             // List of warranties
             foreach ($warrantiesCollection as $key => $val) {
-                $this->warrantiesList[] = array('WarrantyName' => $val->getWarrantyName(),
+                $this->warrantiesList[] = array('WarrantyID' => $val->getWarrantyID(),
+                    'WarrantyName' => $val->getWarrantyName(),
                     'ExpDate' => $val->getExpirationDate()->format("Y-m-d"));
             }
 
