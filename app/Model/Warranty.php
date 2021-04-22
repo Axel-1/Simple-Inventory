@@ -29,6 +29,11 @@ final class Warranty
         WarrantyDAO::updateWarranty($this);
     }
 
+    public function delete(): void
+    {
+        WarrantyDAO::deleteWarranty($this);
+    }
+
     /**
      * @return string
      */

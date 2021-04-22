@@ -37,6 +37,11 @@ final class Site
         SiteDAO::updateSite($this);
     }
 
+    public function delete(): void
+    {
+        SiteDAO::deleteSite($this);
+    }
+
     /**
      * @return int
      */

@@ -28,6 +28,11 @@ final class Room
         RoomDAO::updateRoom($this);
     }
 
+    public function delete(): void
+    {
+        RoomDAO::deleteRoom($this);
+    }
+
     /**
      * @return string
      */

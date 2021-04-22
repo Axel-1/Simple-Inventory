@@ -79,4 +79,10 @@ class ProductDAO extends DAO
             self::update("UPDATE Produit SET Nom_produit = :productName, Fabricant = :manufacturer, Num_modele = :modelNo, Num_serie = :serialNo, Date_achat = :purchaseDate, Chemin_facture = :billPath, Activation = :activated, Date_expiration = :expirationDate WHERE ID_produit = :productID", $productAttributes);
         }
     }
+
+    public static function deleteProduct(Product $product): void
+    {
+        $productAttributes = array(':productID' => $product->getProductID());
+        self::update("DELETE FROM Produit WHERE ID_produit = :productID", $productAttributes);
+    }
 }

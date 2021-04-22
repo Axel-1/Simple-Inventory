@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2"><a href="?action=productList" class="link-secondary text-decoration-none">Products</a> / <a
-            href="?action=productDetails&productID=<?= $this->warrantyDetails['ProductID'] ?>"
-            class="link-secondary text-decoration-none">Product details</a> / Edit warranty</h1>
+                href="?action=productDetails&productID=<?= $this->warrantyDetails['ProductID'] ?>"
+                class="link-secondary text-decoration-none">Product details</a> / Edit warranty</h1>
 </div>
 <div class="container">
     <form action="./?action=warrantyEditSave&warrantyID=<?= $this->warrantyDetails['WarrantyID'] ?>&productID=<?= $this->warrantyDetails['ProductID'] ?>"

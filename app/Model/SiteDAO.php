@@ -31,4 +31,10 @@ class SiteDAO extends DAO
             ':siteID' => $site->getSiteID());
         self::update("UPDATE Site SET Nom_site = :siteName, Adresse = :street, CP = :zipCode, Ville = :city WHERE ID_site = :siteID", $siteAttributes);
     }
+
+    public static function deleteSite(Site $site): void
+    {
+        $siteAttributes = array(':siteID' => $site->getSiteID());
+        self::update("DELETE FROM Site WHERE ID_site = :siteID", $siteAttributes);
+    }
 }

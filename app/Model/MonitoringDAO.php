@@ -36,4 +36,10 @@ class MonitoringDAO extends DAO
         $monitoringAttributes = array(':IP' => $monitoring->getIP(), ':monitID' => $monitoring->getMonitID());
         self::update("UPDATE Supervision SET IP = :IP WHERE ID_supervision = :monitID", $monitoringAttributes);
     }
+
+    public static function deleteMonitoring(Monitoring $monitoring): void
+    {
+        $monitoringAttributes = array(':monitID' => $monitoring->getMonitID());
+        self::update("DELETE FROM Supervision WHERE ID_supervision = :monitID", $monitoringAttributes);
+    }
 }

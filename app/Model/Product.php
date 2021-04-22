@@ -41,6 +41,11 @@ abstract class Product
         ProductDAO::updateProduct($this);
     }
 
+    public function delete(): void
+    {
+        ProductDAO::deleteProduct($this);
+    }
+
     /**
      * @return string
      */

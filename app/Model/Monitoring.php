@@ -41,6 +41,11 @@ final class Monitoring
         MonitoringDAO::updateMonitoring($this);
     }
 
+    public function delete(): void
+    {
+        MonitoringDAO::deleteMonitoring($this);
+    }
+
     /**
      * @return string
      */
