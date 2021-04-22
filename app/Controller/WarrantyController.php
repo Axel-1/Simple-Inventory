@@ -29,7 +29,7 @@ class WarrantyController
         return self::$_instance;
     }
 
-    public function edit()
+    public function edit(): void
     {
         // Preparing the data that will be sent to the view
         $this->warrantyDetails = array('WarrantyID' => $this->warranty->getWarrantyID(),
@@ -44,11 +44,16 @@ class WarrantyController
         include_once "app/View/footer.php";
     }
 
-    public function save()
+    public function save(): void
     {
         $this->warranty->setWarrantyName($_POST["inputWarrantyName"]);
         $this->warranty->setExpirationDate(date_create($_POST["inputWarrantyExpDate"]));
         $this->warranty->persist();
         ProductController::getInstance($_GET['productID'])->details();
+    }
+
+    public function delete(): void
+    {
+        $this->warranty->delete();
     }
 }

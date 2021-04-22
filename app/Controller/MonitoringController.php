@@ -29,7 +29,7 @@ class MonitoringController
         return self::$_instance;
     }
 
-    public function edit()
+    public function edit(): void
     {
         // Preparing the data that will be sent to the view
         $this->monitoringDetails = array('MonitID' => $this->monitoring->getMonitID(),
@@ -49,7 +49,7 @@ class MonitoringController
         include_once "app/View/footer.php";
     }
 
-    public function save()
+    public function save(): void
     {
         $this->monitoring->setIP($_POST["inputMonitIP"]);
         $this->monitoring->persist();
@@ -58,5 +58,10 @@ class MonitoringController
         } elseif (isset($_GET['productID'])) {
             ProductController::getInstance($_GET['productID'])->details();
         }
+    }
+
+    public function delete(): void
+    {
+        $this->monitoring->delete();
     }
 }

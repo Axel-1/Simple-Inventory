@@ -50,7 +50,7 @@ class SiteController
         return self::$_instance;
     }
 
-    public function edit()
+    public function edit(): void
     {
         $this->activePage = "siteList";
         include_once "app/View/header.php";
@@ -58,7 +58,7 @@ class SiteController
         include_once "app/View/footer.php";
     }
 
-    public function save()
+    public function save(): void
     {
         $this->site->setSiteName($_POST["inputSiteName"]);
         $this->site->setStreet($_POST["inputSiteStreet"]);
@@ -69,11 +69,16 @@ class SiteController
         self::$_instance->details();
     }
 
-    public function details()
+    public function details(): void
     {
         $this->activePage = "siteList";
         include_once "app/View/header.php";
         include_once "app/View/siteDetailsView.php";
         include_once "app/View/footer.php";
+    }
+
+    public function delete(): void
+    {
+        $this->site->delete();
     }
 }

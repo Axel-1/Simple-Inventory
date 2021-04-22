@@ -117,4 +117,9 @@ class ProductController
         include_once "app/View/productDetailsView.php";
         include_once "app/View/footer.php";
     }
+
+    public function delete(): void
+    {
+        $this->product->delete();
+    }
 }

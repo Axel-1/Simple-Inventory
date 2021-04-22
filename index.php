@@ -31,8 +31,14 @@ switch ($action) {
     case "productEditSave" :
         ProductController::getInstance($_GET['productID'])->save();
         break;
+    case "productDelete" :
+        ProductController::getInstance($_GET['productID'])->delete();
+        break;
     case "siteDetails" :
         SiteController::getInstance($_GET['siteID'])->details();
+        break;
+    case "siteDelete" :
+        SiteController::getInstance($_GET['siteID'])->delete();
         break;
     case "siteEdit" :
         SiteController::getInstance($_GET['siteID'])->edit();
@@ -40,11 +46,17 @@ switch ($action) {
     case "siteEditSave" :
         SiteController::getInstance($_GET['siteID'])->save();
         break;
+    case "monitDelete" :
+        MonitoringController::getInstance()->delete();
+        break;
     case "monitEdit" :
         MonitoringController::getInstance()->edit();
         break;
     case "monitEditSave" :
         MonitoringController::getInstance()->save();
+        break;
+    case "warrantyDelete" :
+        WarrantyController::getInstance()->delete();
         break;
     case "warrantyEdit" :
         WarrantyController::getInstance()->edit();
