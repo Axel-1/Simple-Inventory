@@ -9,6 +9,7 @@ final class PhysicalProduct extends Product
 {
     private string $hostname;
     private array $warranties;
+    private Site $site;
     private ?Monitoring $productMonitoring;
 
     /**
@@ -24,11 +25,12 @@ final class PhysicalProduct extends Product
      * @param array $warranties
      * @param Monitoring|null $productMonitoring
      */
-    public function __construct(string $productID, string $productName, string $manufacturer, string $modelNo, string $serialNo, DateTime $purchaseDate, string $billPath, string $hostname, array $warranties, ?Monitoring $productMonitoring)
+    public function __construct(string $productID, string $productName, string $manufacturer, string $modelNo, string $serialNo, DateTime $purchaseDate, string $billPath, string $hostname, array $warranties, Site $site, ?Monitoring $productMonitoring)
     {
         parent::__construct($productID, $productName, $manufacturer, $modelNo, $serialNo, $purchaseDate, $billPath);
         $this->hostname = $hostname;
         $this->warranties = $warranties;
+        $this->site = $site;
         $this->productMonitoring = $productMonitoring;
 
     }
