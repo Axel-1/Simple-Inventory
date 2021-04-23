@@ -9,7 +9,6 @@ final class PhysicalProduct extends Product
 {
     private string $hostname;
     private array $warranties;
-    private Room $productRoom;
     private ?Monitoring $productMonitoring;
 
     /**
@@ -23,15 +22,13 @@ final class PhysicalProduct extends Product
      * @param string $billPath
      * @param string $hostname
      * @param array $warranties
-     * @param Room $productRoom
      * @param Monitoring|null $productMonitoring
      */
-    public function __construct(string $productID, string $productName, string $manufacturer, string $modelNo, string $serialNo, DateTime $purchaseDate, string $billPath, string $hostname, array $warranties, Room $productRoom, ?Monitoring $productMonitoring)
+    public function __construct(string $productID, string $productName, string $manufacturer, string $modelNo, string $serialNo, DateTime $purchaseDate, string $billPath, string $hostname, array $warranties, ?Monitoring $productMonitoring)
     {
         parent::__construct($productID, $productName, $manufacturer, $modelNo, $serialNo, $purchaseDate, $billPath);
         $this->hostname = $hostname;
         $this->warranties = $warranties;
-        $this->productRoom = $productRoom;
         $this->productMonitoring = $productMonitoring;
 
     }
@@ -66,22 +63,6 @@ final class PhysicalProduct extends Product
     public function setWarranties(array $warranties): void
     {
         $this->warranties = $warranties;
-    }
-
-    /**
-     * @return Room
-     */
-    public function getProductRoom(): Room
-    {
-        return $this->productRoom;
-    }
-
-    /**
-     * @param Room $productRoom
-     */
-    public function setProductRoom(Room $productRoom): void
-    {
-        $this->productRoom = $productRoom;
     }
 
     /**

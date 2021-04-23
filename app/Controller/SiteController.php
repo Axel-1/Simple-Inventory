@@ -13,7 +13,6 @@ class SiteController
     private static SiteController $_instance;
     private Site $site;
     private array $siteDetails;
-    private ?array $roomsList;
     private array $monitoringDetails;
     private string $activePage;
 
@@ -21,13 +20,6 @@ class SiteController
     {
         // Retrieving data from the database and instantiating objects
         $this->site = SiteDAO::getSiteByID($siteID);
-
-        // Retrieving data from the database and instantiating objects
-        $roomsCollection = RoomDAO::getRoomBySiteID($siteID);
-        // List of warranties
-        foreach ($roomsCollection as $key => $val) {
-            $this->roomsList[] = array('RoomName' => $val->getRoomName());
-        }
 
         // Preparing the data that will be sent to the view
         $this->siteDetails = array('SiteID' => $this->site->getSiteID(),
@@ -38,8 +30,7 @@ class SiteController
             'MonitID' => $this->site->getMonitoring()->getMonitID(),
             'IP' => $this->site->getMonitoring()->getIP(),
             'Status' => $this->site->getMonitoring()->isUp(),
-            'LastPing' => $this->site->getMonitoring()->getLastPing()->format("Y-m-d h:i A"),
-            'Rooms' => isset($this->roomsList) ? $this->roomsList : null);
+            'LastPing' => $this->site->getMonitoring()->getLastPing()->format("Y-m-d h:i A"));
     }
 
     public static function getInstance(int $siteID): SiteController
