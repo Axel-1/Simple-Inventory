@@ -35,6 +35,8 @@
                 <div class="card-body">
                     <a href="?action=productEdit&productID=<?= $this->productDetails['ProductID'] ?>"
                        class="btn btn-primary">Edit</a>
+                    <a href="?action=productDelete&productID=<?= $this->productDetails['ProductID'] ?>"
+                       class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>
@@ -59,6 +61,8 @@
                                     <div class="card-body">
                                         <a href="?action=warrantyEdit&warrantyID=<?= $val['WarrantyID'] ?>&productID=<?= $this->productDetails['ProductID'] ?>"
                                            class="btn btn-primary">Edit</a>
+                                        <a href="?action=warrantyDelete&warrantyID=<?= $val['WarrantyID'] ?>&productID=<?= $this->productDetails['ProductID'] ?>"
+                                           class="btn btn-danger">Delete</a>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -89,6 +93,8 @@
                                 <div class="card-body">
                                     <a href="?action=monitEdit&monitID=<?= $this->productDetails['Monitoring']['MonitID'] ?>&productID=<?= $this->productDetails['ProductID'] ?>"
                                        class="btn btn-primary">Edit</a>
+                                    <a href="?action=monitDelete&monitID=<?= $this->productDetails['Monitoring']['MonitID'] ?>&productID=<?= $this->productDetails['ProductID'] ?>"
+                                       class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         <?php } ?>

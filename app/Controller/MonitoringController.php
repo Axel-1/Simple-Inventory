@@ -63,5 +63,10 @@ class MonitoringController
     public function delete(): void
     {
         $this->monitoring->delete();
+        if (isset($_GET['siteID'])) {
+            SiteController::getInstance($_GET['siteID'])->details();
+        } elseif (isset($_GET['productID'])) {
+            ProductController::getInstance($_GET['productID'])->details();
+        }
     }
 }

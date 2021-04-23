@@ -121,5 +121,6 @@ class ProductController
     public function delete(): void
     {
         $this->product->delete();
+        ProductListController::getInstance()->render();
     }
 }

@@ -70,5 +70,6 @@ class SiteController
     public function delete(): void
     {
         $this->site->delete();
+        SiteListController::getInstance()->render();
     }
 }

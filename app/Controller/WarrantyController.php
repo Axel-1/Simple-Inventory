@@ -55,5 +55,6 @@ class WarrantyController
     public function delete(): void
     {
         $this->warranty->delete();
+        ProductController::getInstance($_GET['productID'])->details();
     }
 }

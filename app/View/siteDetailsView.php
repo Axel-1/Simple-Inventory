@@ -13,6 +13,8 @@
                 <div class="card-body">
                     <a href="?action=siteEdit&siteID=<?= $this->siteDetails['SiteID'] ?>"
                        class="btn btn-primary">Edit</a>
+                    <a href="?action=siteDelete&siteID=<?= $this->siteDetails['SiteID'] ?>"
+                       class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>

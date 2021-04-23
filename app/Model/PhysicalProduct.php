@@ -23,6 +23,7 @@ final class PhysicalProduct extends Product
      * @param string $billPath
      * @param string $hostname
      * @param array $warranties
+     * @param Site $site
      * @param Monitoring|null $productMonitoring
      */
     public function __construct(string $productID, string $productName, string $manufacturer, string $modelNo, string $serialNo, DateTime $purchaseDate, string $billPath, string $hostname, array $warranties, Site $site, ?Monitoring $productMonitoring)
@@ -33,6 +34,14 @@ final class PhysicalProduct extends Product
         $this->site = $site;
         $this->productMonitoring = $productMonitoring;
 
+    }
+
+    public function delete(): void
+    {
+        parent::delete();
+        if (isset($this->productMonitoring)) {
+            $this->productMonitoring->delete();
+        }
     }
 
     /**
