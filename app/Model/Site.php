@@ -12,7 +12,6 @@ final class Site
     private string $city;
     private string $zipCode;
     private Monitoring $monitoring;
-    private array $products;
 
     /**
      * Site constructor.
@@ -22,9 +21,8 @@ final class Site
      * @param string $city
      * @param string $zipCode
      * @param Monitoring $monitoring
-     * @param array $products
      */
-    public function __construct(int $siteID, string $siteName, string $street, string $city, string $zipCode, Monitoring $monitoring, array $products)
+    public function __construct(int $siteID, string $siteName, string $street, string $city, string $zipCode, Monitoring $monitoring)
     {
         $this->siteID = $siteID;
         $this->siteName = $siteName;
@@ -32,7 +30,6 @@ final class Site
         $this->city = $city;
         $this->zipCode = $zipCode;
         $this->monitoring = $monitoring;
-        $this->products = $products;
     }
 
     public function persist(): void
@@ -42,15 +39,7 @@ final class Site
 
     public function delete(): void
     {
-        $this->deleteAllProduct();
         SiteDAO::deleteSite($this);
-    }
-
-    private function deleteAllProduct(): void
-    {
-        foreach ($this->products as $key => $val) {
-            $val->delete();
-        }
     }
 
     /**

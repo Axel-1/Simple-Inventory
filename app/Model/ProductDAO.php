@@ -54,16 +54,6 @@ class ProductDAO extends DAO
         return $productCollection;
     }
 
-    public static function getProductBySiteID(int $siteID): array
-    {
-        $productCollection = array();
-        $rs = self::prepare("SELECT * FROM Produit WHERE ID_site = :siteID", array(":siteID" => $siteID));
-        foreach ($rs as $key => $val) {
-            $productCollection[$val['ID_produit']] = new PhysicalProduct($val['ID_produit'], $val['Nom_produit'], $val['Fabricant'], $val['Num_modele'], $val['Num_serie'], date_create($val['Date_achat']), $val['Chemin_facture'], $val['Nom_hote'], WarrantyDAO::getWarrantyByProductID($val['ID_produit']), ($val['ID_supervision'] == null ? null : MonitoringDAO::getMonitoringByID($val['ID_supervision'])));
-        }
-        return $productCollection;
-    }
-
     public static function updateProduct(Product $product): void
     {
         if ($product instanceof PhysicalProduct) {
