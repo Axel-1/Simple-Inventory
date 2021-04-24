@@ -15,12 +15,6 @@ class MonitoringDAO extends DAO
         return $monitCollection;
     }
 
-    public static function getMonitoringByID(int $monitID): Monitoring
-    {
-        $rs = self::prepare("SELECT * FROM Supervision WHERE ID_supervision = :monitID", array(":monitID" => $monitID));
-        return new Monitoring($rs[0]['ID_supervision'], $rs[0]['IP'], date_create($rs[0]['Date_dernier_ping']));
-    }
-
     public static function getAllProductMonitoring(): array
     {
         $monitCollection = array();
@@ -41,5 +35,18 @@ class MonitoringDAO extends DAO
     {
         $monitoringAttributes = array(':monitID' => $monitoring->getMonitID());
         self::update("DELETE FROM Supervision WHERE ID_supervision = :monitID", $monitoringAttributes);
+    }
+
+    public static function createMonitoring(string $ip): Monitoring
+    {
+        $monitoringAttributes = array(':IP' => $ip);
+        self::update("INSERT INTO Supervision (IP) VALUES (:IP)", $monitoringAttributes);
+        return self::getMonitoringByID(self::getLastInsertID());
+    }
+
+    public static function getMonitoringByID(int $monitID): Monitoring
+    {
+        $rs = self::prepare("SELECT * FROM Supervision WHERE ID_supervision = :monitID", array(":monitID" => $monitID));
+        return new Monitoring($rs[0]['ID_supervision'], $rs[0]['IP'], date_create($rs[0]['Date_dernier_ping']));
     }
 }

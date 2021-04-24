@@ -4,6 +4,8 @@
 namespace App\Model;
 
 
+use DateTime;
+
 class ProductDAO extends DAO
 {
     public static function getAll(): array
@@ -18,16 +20,6 @@ class ProductDAO extends DAO
             }
         }
         return $productCollection;
-    }
-
-    public static function getProductByID(int $productID): Product
-    {
-        $rs = self::prepare("SELECT * FROM Produit WHERE ID_produit = :productID", array(":productID" => $productID));
-        if ($rs[0]['Type'] == "p") {
-            return new PhysicalProduct($rs[0]['ID_produit'], $rs[0]['Nom_produit'], $rs[0]['Fabricant'], $rs[0]['Num_modele'], $rs[0]['Num_serie'], date_create($rs[0]['Date_achat']), $rs[0]['Chemin_facture'], $rs[0]['Nom_hote'], WarrantyDAO::getWarrantyByProductID($rs[0]['ID_produit']), SiteDAO::getSiteByID($rs[0]['ID_site']), ($rs[0]['ID_supervision'] == null ? null : MonitoringDAO::getMonitoringByID($rs[0]['ID_supervision'])));
-        } elseif ($rs[0]['Type'] == "d") {
-            return new DigitalProduct($rs[0]['ID_produit'], $rs[0]['Nom_produit'], $rs[0]['Fabricant'], $rs[0]['Num_modele'], $rs[0]['Num_serie'], date_create($rs[0]['Date_achat']), $rs[0]['Chemin_facture'], $rs[0]['Activation'], date_create($rs[0]['Date_expiration']));
-        }
     }
 
     public static function getProductByType(string $productType): array
@@ -85,5 +77,43 @@ class ProductDAO extends DAO
     {
         $productAttributes = array(':productID' => $product->getProductID());
         self::update("DELETE FROM Produit WHERE ID_produit = :productID", $productAttributes);
+    }
+
+    public static function createPhysicalProduct(string $productName, string $manufacturer, string $modelNo, string $serialNo, DateTime $purchaseDate, string $billPath, string $hostname, Site $site): Product
+    {
+        $productAttributes = array(':productName' => $productName,
+            ':manufacturer' => $manufacturer,
+            ':modelNo' => $modelNo,
+            ':serialNo' => $serialNo,
+            ':purchaseDate' => $purchaseDate->format("Y-m-d"),
+            ':billPath' => $billPath,
+            ':hostname' => $hostname,
+            ':siteID' => $site->getSiteID());
+        self::update("INSERT INTO Produit (Nom_produit, Fabricant, Num_modele, Num_serie, Date_achat, Chemin_facture, Nom_hote, ID_site, Type) VALUES (:productName, :manufacturer, :modelNo, :serialNo, :purchaseDate, :billPath, :hostname, :siteID, 'p')", $productAttributes);
+        return self::getProductByID(self::getLastInsertID());
+    }
+
+    public static function getProductByID(int $productID): Product
+    {
+        $rs = self::prepare("SELECT * FROM Produit WHERE ID_produit = :productID", array(":productID" => $productID));
+        if ($rs[0]['Type'] == "p") {
+            return new PhysicalProduct($rs[0]['ID_produit'], $rs[0]['Nom_produit'], $rs[0]['Fabricant'], $rs[0]['Num_modele'], $rs[0]['Num_serie'], date_create($rs[0]['Date_achat']), $rs[0]['Chemin_facture'], $rs[0]['Nom_hote'], WarrantyDAO::getWarrantyByProductID($rs[0]['ID_produit']), SiteDAO::getSiteByID($rs[0]['ID_site']), ($rs[0]['ID_supervision'] == null ? null : MonitoringDAO::getMonitoringByID($rs[0]['ID_supervision'])));
+        } elseif ($rs[0]['Type'] == "d") {
+            return new DigitalProduct($rs[0]['ID_produit'], $rs[0]['Nom_produit'], $rs[0]['Fabricant'], $rs[0]['Num_modele'], $rs[0]['Num_serie'], date_create($rs[0]['Date_achat']), $rs[0]['Chemin_facture'], $rs[0]['Activation'], date_create($rs[0]['Date_expiration']));
+        }
+    }
+
+    public static function createDigitalProduct(string $productName, string $manufacturer, string $modelNo, string $serialNo, DateTime $purchaseDate, string $billPath, bool $activated, DateTime $expirationDate): Product
+    {
+        $productAttributes = array(':productName' => $productName,
+            ':manufacturer' => $manufacturer,
+            ':modelNo' => $modelNo,
+            ':serialNo' => $serialNo,
+            ':purchaseDate' => $purchaseDate->format("Y-m-d"),
+            ':billPath' => $billPath,
+            ':activated' => $activated,
+            ':expirationDate' => $expirationDate->format("Y-m-d"));
+        self::update("INSERT INTO Produit (Nom_produit, Fabricant, Num_modele, Num_serie, Date_achat, Chemin_facture, Activation, Date_expiration, Type) VALUES (:productName, :manufacturer, :modelNo, :serialNo, :purchaseDate, :billPath, :activated, :expirationDate, 'd')", $productAttributes);
+        return self::getProductByID(self::getLastInsertID());
     }
 }

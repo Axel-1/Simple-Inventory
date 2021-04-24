@@ -42,4 +42,9 @@ class DAO
         $stmt = self::getPDO()->prepare($statement);
         $stmt->execute($attributes);
     }
+
+    protected static function getLastInsertID(): string
+    {
+        return self::getPDO()->lastInsertId();
+    }
 }
