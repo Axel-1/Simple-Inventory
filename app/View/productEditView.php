@@ -57,7 +57,7 @@
                 <label for="inputProdSite" class="form-label">Site</label>
                 <select class="form-select" name="inputProdSite" required>
                     <option selected
-                            value="<?= $this->siteDetails['SiteID'] ?>"><?= $this->siteDetails['SiteName'] ?></option>
+                            value="<?= $this->productDetails['Site']['SiteID'] ?>"><?= $this->productDetails['Site']['SiteName'] ?></option>
                     <?php foreach ($siteList as $key => $val) { ?>
                         <option value="<?= $key ?>"><?= $val ?></option>
                     <?php } ?>

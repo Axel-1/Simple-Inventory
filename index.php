@@ -23,28 +23,28 @@ switch ($action) {
         MonitoringListController::getInstance()->render();
         break;
     case "productDetails" :
-        ProductController::getInstance($_GET['productID'])->details();
+        ProductController::getInstance()->details();
         break;
     case "productEdit" :
-        ProductController::getInstance($_GET['productID'])->edit();
+        ProductController::getInstance()->edit();
         break;
     case "productEditSave" :
-        ProductController::getInstance($_GET['productID'])->save();
+        ProductController::getInstance()->save();
         break;
     case "productDelete" :
-        ProductController::getInstance($_GET['productID'])->delete();
+        ProductController::getInstance()->delete();
         break;
     case "siteDetails" :
-        SiteController::getInstance($_GET['siteID'])->details();
+        SiteController::getInstance()->details();
         break;
     case "siteDelete" :
-        SiteController::getInstance($_GET['siteID'])->delete();
+        SiteController::getInstance()->delete();
         break;
     case "siteEdit" :
-        SiteController::getInstance($_GET['siteID'])->edit();
+        SiteController::getInstance()->edit();
         break;
     case "siteEditSave" :
-        SiteController::getInstance($_GET['siteID'])->save();
+        SiteController::getInstance()->save();
         break;
     case "monitDelete" :
         MonitoringController::getInstance()->delete();

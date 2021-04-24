@@ -9,17 +9,30 @@ use App\Model\SiteDAO;
 
 class SiteController
 {
-    private static SiteController $_instance;
     private Site $site;
     private array $siteDetails;
-    private array $monitoringDetails;
     private string $activePage;
 
-    private function __construct(int $siteID)
+    private function __construct()
     {
         // Retrieving data from the database and instantiating objects
-        $this->site = SiteDAO::getSiteByID($siteID);
+        $this->site = SiteDAO::getSiteByID($_GET['siteID']);
+    }
 
+    public function edit(): void
+    {
+        $this->prepareData();
+
+        $this->activePage = "siteList";
+
+        // Loading view
+        include_once "app/View/header.php";
+        include_once "app/View/siteEditView.php";
+        include_once "app/View/footer.php";
+    }
+
+    private function prepareData(): void
+    {
         // Preparing the data that will be sent to the view
         $this->siteDetails = array('SiteID' => $this->site->getSiteID(),
             'SiteName' => $this->site->getSiteName(),
@@ -32,44 +45,43 @@ class SiteController
             'LastPing' => $this->site->getMonitoring()->getLastPing()->format("Y-m-d h:i A"));
     }
 
-    public static function getInstance(int $siteID): SiteController
-    {
-        if (!isset(self::$_instance)) {
-            self::$_instance = new self($siteID);
-        }
-        return self::$_instance;
-    }
-
-    public function edit(): void
-    {
-        $this->activePage = "siteList";
-        include_once "app/View/header.php";
-        include_once "app/View/siteEditView.php";
-        include_once "app/View/footer.php";
-    }
-
     public function save(): void
     {
+        // Setting object properties
         $this->site->setSiteName($_POST["inputSiteName"]);
         $this->site->setStreet($_POST["inputSiteStreet"]);
         $this->site->setZipCode($_POST["inputSiteZip"]);
         $this->site->setCity($_POST["inputSiteCity"]);
+
+        // Saving change in the database
         $this->site->persist();
-        self::$_instance = new self($_GET['siteID']);
-        self::$_instance->details();
+
+        // Reloading details page
+        self::getInstance()->details();
     }
 
     public function details(): void
     {
+        $this->prepareData();
+
         $this->activePage = "siteList";
+
+        // Loading view
         include_once "app/View/header.php";
         include_once "app/View/siteDetailsView.php";
         include_once "app/View/footer.php";
     }
 
+    public static function getInstance(): SiteController
+    {
+        return new self();
+    }
+
     public function delete(): void
     {
         $this->site->delete();
+
+        // Reloading sites list
         SiteListController::getInstance()->render();
     }
 }
