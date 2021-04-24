@@ -36,14 +36,6 @@ final class PhysicalProduct extends Product
 
     }
 
-    public function delete(): void
-    {
-        parent::delete();
-        if (isset($this->productMonitoring)) {
-            $this->productMonitoring->delete();
-        }
-    }
-
     /**
      * @return string
      */

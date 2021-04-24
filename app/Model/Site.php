@@ -40,7 +40,6 @@ final class Site
     public function delete(): void
     {
         SiteDAO::deleteSite($this);
-        $this->monitoring->delete();
     }
 
     /**
