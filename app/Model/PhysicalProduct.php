@@ -37,6 +37,22 @@ final class PhysicalProduct extends Product
     }
 
     /**
+     * @return Site
+     */
+    public function getSite(): Site
+    {
+        return $this->site;
+    }
+
+    /**
+     * @param Site $site
+     */
+    public function setSite(Site $site): void
+    {
+        $this->site = $site;
+    }
+
+    /**
      * @return string
      */
     public function getHostname(): string

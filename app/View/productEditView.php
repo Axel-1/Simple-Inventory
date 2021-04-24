@@ -47,6 +47,23 @@
             <input type="text" class="form-control" name="inputProdBillPath"
                    value="<?= $this->productDetails['BillPath'] ?>">
         </div>
+        <div class="col-md-6">
+            <label for="inputProdType" class="form-label">Type</label>
+            <input type="text" class="form-control" name="inputProdType" disabled readonly
+                   value="<?= $this->productDetails['Type'] ?>">
+        </div>
+        <?php if ($this->productDetails['Type'] == "Physical") { ?>
+            <div class="col-md-3">
+                <label for="inputProdSite" class="form-label">Site</label>
+                <select class="form-select" name="inputProdSite" required>
+                    <option selected
+                            value="<?= $this->siteDetails['SiteID'] ?>"><?= $this->siteDetails['SiteName'] ?></option>
+                    <?php foreach ($siteList as $key => $val) { ?>
+                        <option value="<?= $key ?>"><?= $val ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        <?php } ?>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>

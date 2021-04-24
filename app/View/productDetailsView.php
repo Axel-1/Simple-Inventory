@@ -18,7 +18,12 @@
                                     <b>Manufacturer</b>: <?= $this->productDetails['Manufacturer'] ?></li>
                                 <li class="list-group-item"><b>Model N°</b>: <?= $this->productDetails['ModelNo'] ?>
                                 </li>
-                                <li class="list-group-item"><b>Type</b>: <?= $this->productDetails['Type'] ?></li>
+                                <?php if ($this->productDetails['Type'] == "Physical") { ?>
+                                    <li class="list-group-item">
+                                        <b>Site</b>: <?= $this->productDetails['Site']['SiteName'] ?></li>
+                                <?php } else { ?>
+                                    <li class="list-group-item"><b>Type</b>: <?= $this->productDetails['Type'] ?></li>
+                                <?php } ?>
                             </ul>
                         </div>
                         <div class="col">
