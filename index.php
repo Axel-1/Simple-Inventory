@@ -64,6 +64,12 @@ switch ($action) {
     case "warrantyEditSave" :
         WarrantyController::getInstance()->save();
         break;
+    case "warrantyCreate" :
+        WarrantyCreateController::getInstance()->create();
+        break;
+    case "warrantyCreateSave" :
+        WarrantyCreateController::getInstance()->save();
+        break;
     default :
         DashboardController::getInstance()->render();
         break;

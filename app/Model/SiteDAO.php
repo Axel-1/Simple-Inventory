@@ -23,13 +23,13 @@ class SiteDAO extends DAO
             ':zipCode' => $site->getZipCode(),
             ':city' => $site->getCity(),
             ':siteID' => $site->getSiteID());
-        self::update("UPDATE Site SET Nom_site = :siteName, Adresse = :street, CP = :zipCode, Ville = :city WHERE ID_site = :siteID", $siteAttributes);
+        self::write("UPDATE Site SET Nom_site = :siteName, Adresse = :street, CP = :zipCode, Ville = :city WHERE ID_site = :siteID", $siteAttributes);
     }
 
     public static function deleteSite(Site $site): void
     {
         $siteAttributes = array(':siteID' => $site->getSiteID());
-        self::update("DELETE FROM Site WHERE ID_site = :siteID", $siteAttributes);
+        self::write("DELETE FROM Site WHERE ID_site = :siteID", $siteAttributes);
     }
 
     public static function createSite(string $siteName, string $street, string $zipCode, string $city, Monitoring $monitoring): Site
@@ -39,7 +39,7 @@ class SiteDAO extends DAO
             ':zipCode' => $zipCode,
             ':city' => $city,
             ':monitID' => $monitoring->getMonitID());
-        self::update("INSERT INTO Site (Nom_site, Adresse, CP, Ville, ID_supervision) VALUES (:siteName, :street, :zipCode, :city, :monitID)", $siteAttributes);
+        self::write("INSERT INTO Site (Nom_site, Adresse, CP, Ville, ID_supervision) VALUES (:siteName, :street, :zipCode, :city, :monitID)", $siteAttributes);
         return self::getSiteByID(self::getLastInsertID());
     }
 

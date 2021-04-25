@@ -62,7 +62,7 @@ class WarrantyController
     {
         $this->warranty->delete();
 
-        // Reloading products list
+        // Reloading products details
         ProductController::getInstance()->details();
     }
 }

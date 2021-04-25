@@ -33,13 +33,13 @@ class WarrantyDAO extends DAO
         $warrantyAttributes = array(':warrantyName' => $warranty->getWarrantyName(),
             ':expirationDate' => $warranty->getExpirationDate()->format("Y-m-d"),
             ':warrantyID' => $warranty->getWarrantyID());
-        self::update("UPDATE Garantie SET Nom_garantie = :warrantyName, Date_expiration = :expirationDate WHERE ID_garantie = :warrantyID", $warrantyAttributes);
+        self::write("UPDATE Garantie SET Nom_garantie = :warrantyName, Date_expiration = :expirationDate WHERE ID_garantie = :warrantyID", $warrantyAttributes);
     }
 
     public static function deleteWarranty(Warranty $warranty): void
     {
         $warrantyAttributes = array(':warrantyID' => $warranty->getWarrantyID());
-        self::update("DELETE FROM Garantie WHERE ID_garantie = :warrantyID", $warrantyAttributes);
+        self::write("DELETE FROM Garantie WHERE ID_garantie = :warrantyID", $warrantyAttributes);
     }
 
     public static function createWarranty(string $warrantyName, DateTime $expirationDate, PhysicalProduct $product): Warranty
@@ -47,7 +47,7 @@ class WarrantyDAO extends DAO
         $warrantyAttributes = array(':warrantyName' => $warrantyName,
             ':expirationDate' => $expirationDate->format("Y-m-d"),
             ':productID' => $product->getProductID());
-        self::update("INSERT INTO Garantie (Nom_garantie, Date_expiration, ID_produit) VALUES (:warrantyName, :expirationDate, :productID)", $warrantyAttributes);
+        self::write("INSERT INTO Garantie (Nom_garantie, Date_expiration, ID_produit) VALUES (:warrantyName, :expirationDate, :productID)", $warrantyAttributes);
         return self::getWarrantyByID(self::getLastInsertID());
     }
 

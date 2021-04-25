@@ -28,19 +28,19 @@ class MonitoringDAO extends DAO
     public static function updateMonitoring(Monitoring $monitoring): void
     {
         $monitoringAttributes = array(':IP' => $monitoring->getIP(), ':monitID' => $monitoring->getMonitID());
-        self::update("UPDATE Supervision SET IP = :IP WHERE ID_supervision = :monitID", $monitoringAttributes);
+        self::write("UPDATE Supervision SET IP = :IP WHERE ID_supervision = :monitID", $monitoringAttributes);
     }
 
     public static function deleteMonitoring(Monitoring $monitoring): void
     {
         $monitoringAttributes = array(':monitID' => $monitoring->getMonitID());
-        self::update("DELETE FROM Supervision WHERE ID_supervision = :monitID", $monitoringAttributes);
+        self::write("DELETE FROM Supervision WHERE ID_supervision = :monitID", $monitoringAttributes);
     }
 
     public static function createMonitoring(string $ip): Monitoring
     {
         $monitoringAttributes = array(':IP' => $ip);
-        self::update("INSERT INTO Supervision (IP) VALUES (:IP)", $monitoringAttributes);
+        self::write("INSERT INTO Supervision (IP) VALUES (:IP)", $monitoringAttributes);
         return self::getMonitoringByID(self::getLastInsertID());
     }
 

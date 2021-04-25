@@ -37,7 +37,7 @@ class DAO
         return $stmt->fetchAll();
     }
 
-    protected static function update($statement, $attributes): void
+    protected static function write($statement, $attributes): void
     {
         $stmt = self::getPDO()->prepare($statement);
         $stmt->execute($attributes);

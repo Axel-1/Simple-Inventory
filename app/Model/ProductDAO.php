@@ -58,7 +58,7 @@ class ProductDAO extends DAO
                 ':hostname' => $product->getHostname(),
                 ':productID' => $product->getProductID(),
                 ':siteID' => $product->getSite()->getSiteID());
-            self::update("UPDATE Produit SET Nom_produit = :productName, Fabricant = :manufacturer, Num_modele = :modelNo, Num_serie = :serialNo, Date_achat = :purchaseDate, Chemin_facture = :billPath, Nom_hote = :hostname, ID_site = :siteID WHERE ID_produit = :productID", $productAttributes);
+            self::write("UPDATE Produit SET Nom_produit = :productName, Fabricant = :manufacturer, Num_modele = :modelNo, Num_serie = :serialNo, Date_achat = :purchaseDate, Chemin_facture = :billPath, Nom_hote = :hostname, ID_site = :siteID WHERE ID_produit = :productID", $productAttributes);
         } elseif ($product instanceof DigitalProduct) {
             $productAttributes = array(':productName' => $product->getProductName(),
                 ':manufacturer' => $product->getManufacturer(),
@@ -69,14 +69,14 @@ class ProductDAO extends DAO
                 ':activated' => $product->isActivated(),
                 ':expirationDate' => $product->getExpirationDate()->format("Y-m-d"),
                 ':productID' => $product->getProductID());
-            self::update("UPDATE Produit SET Nom_produit = :productName, Fabricant = :manufacturer, Num_modele = :modelNo, Num_serie = :serialNo, Date_achat = :purchaseDate, Chemin_facture = :billPath, Activation = :activated, Date_expiration = :expirationDate WHERE ID_produit = :productID", $productAttributes);
+            self::write("UPDATE Produit SET Nom_produit = :productName, Fabricant = :manufacturer, Num_modele = :modelNo, Num_serie = :serialNo, Date_achat = :purchaseDate, Chemin_facture = :billPath, Activation = :activated, Date_expiration = :expirationDate WHERE ID_produit = :productID", $productAttributes);
         }
     }
 
     public static function deleteProduct(Product $product): void
     {
         $productAttributes = array(':productID' => $product->getProductID());
-        self::update("DELETE FROM Produit WHERE ID_produit = :productID", $productAttributes);
+        self::write("DELETE FROM Produit WHERE ID_produit = :productID", $productAttributes);
     }
 
     public static function createPhysicalProduct(string $productName, string $manufacturer, string $modelNo, string $serialNo, DateTime $purchaseDate, string $billPath, string $hostname, Site $site): Product
@@ -89,7 +89,7 @@ class ProductDAO extends DAO
             ':billPath' => $billPath,
             ':hostname' => $hostname,
             ':siteID' => $site->getSiteID());
-        self::update("INSERT INTO Produit (Nom_produit, Fabricant, Num_modele, Num_serie, Date_achat, Chemin_facture, Nom_hote, ID_site, Type) VALUES (:productName, :manufacturer, :modelNo, :serialNo, :purchaseDate, :billPath, :hostname, :siteID, 'p')", $productAttributes);
+        self::write("INSERT INTO Produit (Nom_produit, Fabricant, Num_modele, Num_serie, Date_achat, Chemin_facture, Nom_hote, ID_site, Type) VALUES (:productName, :manufacturer, :modelNo, :serialNo, :purchaseDate, :billPath, :hostname, :siteID, 'p')", $productAttributes);
         return self::getProductByID(self::getLastInsertID());
     }
 
@@ -113,7 +113,7 @@ class ProductDAO extends DAO
             ':billPath' => $billPath,
             ':activated' => $activated,
             ':expirationDate' => $expirationDate->format("Y-m-d"));
-        self::update("INSERT INTO Produit (Nom_produit, Fabricant, Num_modele, Num_serie, Date_achat, Chemin_facture, Activation, Date_expiration, Type) VALUES (:productName, :manufacturer, :modelNo, :serialNo, :purchaseDate, :billPath, :activated, :expirationDate, 'd')", $productAttributes);
+        self::write("INSERT INTO Produit (Nom_produit, Fabricant, Num_modele, Num_serie, Date_achat, Chemin_facture, Activation, Date_expiration, Type) VALUES (:productName, :manufacturer, :modelNo, :serialNo, :purchaseDate, :billPath, :activated, :expirationDate, 'd')", $productAttributes);
         return self::getProductByID(self::getLastInsertID());
     }
 }
