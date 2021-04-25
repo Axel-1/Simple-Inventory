@@ -55,6 +55,12 @@ switch ($action) {
     case "monitEditSave" :
         MonitoringController::getInstance()->save();
         break;
+    case "monitCreate" :
+        MonitoringCreateController::getInstance()->create();
+        break;
+    case "monitCreateSave" :
+        MonitoringCreateController::getInstance()->save();
+        break;
     case "warrantyDelete" :
         WarrantyController::getInstance()->delete();
         break;

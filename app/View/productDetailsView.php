@@ -80,6 +80,8 @@
             <div class="col-6">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h4>Monitoring</h4>
+                    <a href="?action=monitCreate&productID=<?= $this->productDetails['ProductID'] ?>"
+                       class="btn btn-primary">+</a>
                 </div>
                 <div class="row">
                     <div class="col">

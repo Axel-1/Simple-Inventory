@@ -40,7 +40,7 @@ class MonitoringDAO extends DAO
     public static function createMonitoring(string $ip): Monitoring
     {
         $monitoringAttributes = array(':IP' => $ip);
-        self::write("INSERT INTO Supervision (IP) VALUES (:IP)", $monitoringAttributes);
+        self::write("INSERT INTO Supervision (IP, Date_dernier_ping) VALUES (:IP, '1970-01-01')", $monitoringAttributes);
         return self::getMonitoringByID(self::getLastInsertID());
     }
 
