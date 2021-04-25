@@ -31,6 +31,12 @@ switch ($action) {
     case "productEditSave" :
         ProductController::getInstance()->save();
         break;
+    case "productCreate" :
+        ProductCreateController::getInstance()->create();
+        break;
+    case "productCreateSave" :
+        ProductCreateController::getInstance()->save();
+        break;
     case "productDelete" :
         ProductController::getInstance()->delete();
         break;
