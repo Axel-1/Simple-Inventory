@@ -57,7 +57,6 @@ class ProductCreateController
                 $_POST["inputProdSerialNo"],
                 date_create($_POST["inputProdPurchaseDate"]),
                 $_POST["inputProdBillPath"],
-                false,
                 date_create($_POST["inputProdExpDate"]))->getProductID();
         }
 
