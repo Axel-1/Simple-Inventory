@@ -46,6 +46,12 @@ switch ($action) {
     case "siteEditSave" :
         SiteController::getInstance()->save();
         break;
+    case "siteCreate" :
+        SiteCreateController::getInstance()->create();
+        break;
+    case "siteCreateSave" :
+        SiteCreateController::getInstance()->save();
+        break;
     case "monitDelete" :
         MonitoringController::getInstance()->delete();
         break;
