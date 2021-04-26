@@ -8,23 +8,6 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-
-
     <!-- Custom styles for this template -->
     <link href="assets/css/dashboard.css" rel="stylesheet">
 </head>
@@ -88,13 +71,6 @@
                            href="?action=userList">
                             <i class="bi bi-people bi-sb me-1"></i>
                             Users
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $this->activePage == "settings" ? "active" : "" ?>"
-                           href="?action=settings">
-                            <i class="bi bi-gear bi-sb me-1"></i>
-                            Settings
                         </a>
                     </li>
                 </ul>
