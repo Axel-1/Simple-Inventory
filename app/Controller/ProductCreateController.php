@@ -42,7 +42,7 @@ class ProductCreateController
     public function save(): void
     {
         if ($this->productType == "Physical") {
-            $_GET['productID'] = ProductDAO::createPhysicalProduct($_POST["inputProdName"],
+            $productID = ProductDAO::createPhysicalProduct($_POST["inputProdName"],
                 $_POST["inputProdManufacturer"],
                 $_POST["inputProdModelNo"],
                 $_POST["inputProdSerialNo"],
@@ -51,7 +51,7 @@ class ProductCreateController
                 $_POST["inputProdHostname"],
                 SiteDAO::getSiteByID($_POST["inputProdSite"]))->getProductID();
         } elseif ($this->productType == "Digital") {
-            $_GET['productID'] = ProductDAO::createDigitalProduct($_POST["inputProdName"],
+            $productID = ProductDAO::createDigitalProduct($_POST["inputProdName"],
                 $_POST["inputProdManufacturer"],
                 $_POST["inputProdModelNo"],
                 $_POST["inputProdSerialNo"],
@@ -61,6 +61,6 @@ class ProductCreateController
         }
 
         // Reloading products details
-        ProductController::getInstance()->details();
+        header("Location: ?action=productDetails&productID=" . $productID);
     }
 }

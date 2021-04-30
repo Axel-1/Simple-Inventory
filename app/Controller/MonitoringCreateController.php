@@ -45,6 +45,6 @@ class MonitoringCreateController
         $this->physicalProduct->persist();
 
         // Reloading products details
-        ProductController::getInstance()->details();
+        header("Location: ?action=productDetails&productID=" . $this->physicalProduct->getProductID());
     }
 }

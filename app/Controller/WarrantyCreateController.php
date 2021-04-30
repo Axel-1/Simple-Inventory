@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Model\PhysicalProduct;
 use App\Model\ProductDAO;
 use App\Model\WarrantyDAO;
+use http\Header;
 
 class WarrantyCreateController
 {
@@ -44,6 +45,6 @@ class WarrantyCreateController
         WarrantyDAO::createWarranty($_POST['inputWarrantyName'], date_create($_POST['inputWarrantyExpDate']), $this->physicalProduct);
 
         // Reloading products details
-        ProductController::getInstance()->details();
+        header("Location: ?action=productDetails&productID=" . $this->physicalProduct->getProductID());
     }
 }

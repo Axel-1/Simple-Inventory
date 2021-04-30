@@ -57,7 +57,7 @@ class SiteController
         $this->site->persist();
 
         // Reloading details page
-        self::getInstance()->details();
+        header("Location: ?action=siteDetails&siteID=" . $this->site->getSiteID());
     }
 
     public function details(): void
@@ -82,6 +82,6 @@ class SiteController
         $this->site->delete();
 
         // Reloading sites list
-        SiteListController::getInstance()->render();
+        header("Location: ?action=siteList");
     }
 }

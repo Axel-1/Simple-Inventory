@@ -55,7 +55,7 @@ class WarrantyController
         $this->warranty->persist();
 
         // Reloading details page
-        ProductController::getInstance()->details();
+        header("Location: ?action=productDetails&productID=" . $_GET['productID']);
     }
 
     public function delete(): void
@@ -63,6 +63,6 @@ class WarrantyController
         $this->warranty->delete();
 
         // Reloading products details
-        ProductController::getInstance()->details();
+        header("Location: ?action=productDetails&productID=" . $_GET['productID']);
     }
 }

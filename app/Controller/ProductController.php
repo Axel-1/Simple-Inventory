@@ -128,7 +128,7 @@ class ProductController
         $this->product->persist();
 
         // Reloading details page
-        self::getInstance()->details();
+        header("Location: ?action=productDetails&productID=" . $this->product->getProductID());
     }
 
     public function details(): void
@@ -153,6 +153,6 @@ class ProductController
         $this->product->delete();
 
         // Reloading products list
-        ProductListController::getInstance()->render();
+        header("Location: ?action=productList");
     }
 }

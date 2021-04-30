@@ -59,9 +59,9 @@ class MonitoringController
         $this->monitoring->persist();
 
         if (isset($_GET['siteID'])) {
-            SiteController::getInstance()->details();
+            header("Location: ?action=siteDetails&siteID=" . $_GET['siteID']);
         } elseif (isset($_GET['productID'])) {
-            ProductController::getInstance()->details();
+            header("Location: ?action=productDetails&productID=" . $_GET['productID']);
         }
     }
 
@@ -71,9 +71,9 @@ class MonitoringController
 
         // Reloading site details or product details
         if (isset($_GET['siteID'])) {
-            SiteController::getInstance()->details();
+            header("Location: ?action=siteDetails&siteID=" . $_GET['siteID']);
         } elseif (isset($_GET['productID'])) {
-            ProductController::getInstance()->details();
+            header("Location: ?action=productDetails&productID=" . $_GET['productID']);
         }
     }
 }

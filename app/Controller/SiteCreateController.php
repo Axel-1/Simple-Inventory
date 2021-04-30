@@ -33,8 +33,8 @@ class SiteCreateController
 
     public function save(): void
     {
-        $_GET['siteID'] = SiteDAO::createSite($_POST['inputSiteName'], $_POST['inputSiteStreet'], $_POST['inputSiteZip'], $_POST['inputSiteCity'], MonitoringDAO::createMonitoring($_POST['inputSiteIP']))->getSiteID();
+        $siteID = SiteDAO::createSite($_POST['inputSiteName'], $_POST['inputSiteStreet'], $_POST['inputSiteZip'], $_POST['inputSiteCity'], MonitoringDAO::createMonitoring($_POST['inputSiteIP']))->getSiteID();
         // Reloading products details
-        SiteController::getInstance()->details();
+        header("Location: ?action=siteDetails&siteID=" . $siteID);
     }
 }
