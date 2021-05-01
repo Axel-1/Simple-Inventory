@@ -22,6 +22,11 @@ class ProductController
         $this->product = ProductDAO::getProductByID($_GET['productID']);
     }
 
+    public static function getInstance(): ProductController
+    {
+        return new self();
+    }
+
     public function edit(): void
     {
         $this->prepareData();
@@ -141,11 +146,6 @@ class ProductController
         include_once "app/View/header.php";
         include_once "app/View/productDetailsView.php";
         include_once "app/View/footer.php";
-    }
-
-    public static function getInstance(): ProductController
-    {
-        return new self();
     }
 
     public function delete(): void

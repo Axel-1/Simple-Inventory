@@ -19,6 +19,11 @@ class SiteController
         $this->site = SiteDAO::getSiteByID($_GET['siteID']);
     }
 
+    public static function getInstance(): SiteController
+    {
+        return new self();
+    }
+
     public function edit(): void
     {
         $this->prepareData();
@@ -70,11 +75,6 @@ class SiteController
         include_once "app/View/header.php";
         include_once "app/View/siteDetailsView.php";
         include_once "app/View/footer.php";
-    }
-
-    public static function getInstance(): SiteController
-    {
-        return new self();
     }
 
     public function delete(): void

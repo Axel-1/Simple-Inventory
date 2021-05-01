@@ -7,7 +7,6 @@ namespace App\Controller;
 use App\Model\PhysicalProduct;
 use App\Model\ProductDAO;
 use App\Model\WarrantyDAO;
-use http\Header;
 
 class WarrantyCreateController
 {
