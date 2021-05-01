@@ -4,6 +4,8 @@
 namespace App\Controller;
 
 
+use App\Model\UserDAO;
+
 require "vendor/autoload.php";
 
 if (isset($_GET['action'])) {
@@ -87,6 +89,9 @@ switch ($action) {
         break;
     case "warrantyCreateSave" :
         WarrantyCreateController::getInstance()->save();
+        break;
+    case "userList" :
+        UserListController::getInstance()->render();
         break;
     default :
         DashboardController::getInstance()->render();
