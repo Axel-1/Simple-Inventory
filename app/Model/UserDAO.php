@@ -28,10 +28,11 @@ class UserDAO extends DAO
         self::write("DELETE FROM Utilisateur WHERE ID_utilisateur = :userID", $userAttributes);
     }
 
-    public static function createUser(string $firstName, string $lastName, string $email, string $mdp): User
+    public static function createUser(string $firstName, string $lastName, string $email, string $password): User
     {
-        $userAttributes = array(':firstName' => $firstName, ':lastName' => $lastName, ':email' => $email, ':mdp' => $mdp);
-        self::write("INSERT INTO Utilisateur (Prenom, Nom, Email, Mdp) VALUES (:firstName, :lastName, :email, :mdp)", $userAttributes);
+        $encryptedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $userAttributes = array(':firstName' => $firstName, ':lastName' => $lastName, ':email' => $email, ':password' => $encryptedPassword);
+        self::write("INSERT INTO Utilisateur (Prenom, Nom, Email, Mdp) VALUES (:firstName, :lastName, :email, :password)", $userAttributes);
         return self::getUserByID(self::getLastInsertID());
     }
 
@@ -41,9 +42,13 @@ class UserDAO extends DAO
         return new User($rs[0]['ID_utilisateur'], $rs[0]['Prenom'], $rs[0]['Nom'], $rs[0]['Email'], $rs[0]['Mdp']);
     }
 
-    public static function getUserByEmail(string $email): User
+    public static function getUserByEmail(string $email): ?User
     {
         $rs = self::prepare("SELECT * FROM Utilisateur WHERE Email = :email", array(":email" => $email));
-        return new User($rs[0]['ID_utilisateur'], $rs[0]['Prenom'], $rs[0]['Nom'], $rs[0]['Email'], $rs[0]['Mdp']);
+        if (!$rs) {
+            return null;
+        } else {
+            return new User($rs[0]['ID_utilisateur'], $rs[0]['Prenom'], $rs[0]['Nom'], $rs[0]['Email'], $rs[0]['Mdp']);
+        }
     }
 }

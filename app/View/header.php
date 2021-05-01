@@ -23,12 +23,13 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav ps-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Logged in as <b>Axel</b></a>
+            <a class="nav-link" href="?action=userEdit&userID=<?= $_SESSION['userID'] ?>">Logged in as
+                <b><?= $_SESSION['userFirstName'] ?></b></a>
         </li>
     </ul>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="btn btn-outline-danger" href="#">Sign out</a>
+            <a class="btn btn-outline-danger" href="?action=authenticationLogout">Sign out</a>
         </li>
     </ul>
 </header>
