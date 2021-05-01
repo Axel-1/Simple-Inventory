@@ -102,6 +102,12 @@ switch ($action) {
     case "userEditSave" :
         UserController::getInstance()->save();
         break;
+    case "userCreate" :
+        UserCreateController::getInstance()->create();
+        break;
+    case "userCreateSave" :
+        UserCreateController::getInstance()->save();
+        break;
     default :
         DashboardController::getInstance()->render();
         break;
