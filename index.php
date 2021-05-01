@@ -93,6 +93,15 @@ switch ($action) {
     case "userList" :
         UserListController::getInstance()->render();
         break;
+    case "userDelete" :
+        UserController::getInstance()->delete();
+        break;
+    case "userEdit" :
+        UserController::getInstance()->edit();
+        break;
+    case "userEditSave" :
+        UserController::getInstance()->save();
+        break;
     default :
         DashboardController::getInstance()->render();
         break;
