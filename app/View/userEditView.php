@@ -7,17 +7,17 @@
         <div class="col-md-6">
             <label for="inputUserFirstName" class="form-label">First Name</label>
             <input type="text" class="form-control" name="inputUserFirstName"
-                   value="<?= $this->userDetails['FirstName'] ?>">
+                   value="<?= $this->userDetails['FirstName'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputUserLastName" class="form-label">Last Name</label>
             <input type="text" class="form-control" name="inputUserLastName"
-                   value="<?= $this->userDetails['LastName'] ?>">
+                   value="<?= $this->userDetails['LastName'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputUserEmail" class="form-label">Email</label>
             <input type="text" class="form-control" name="inputUserEmail"
-                   value="<?= $this->userDetails['Email'] ?>">
+                   value="<?= $this->userDetails['Email'] ?>" required>
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Save</button>

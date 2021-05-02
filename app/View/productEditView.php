@@ -9,43 +9,38 @@
         <div class="col-md-6">
             <label for="inputProdName" class="form-label">Name</label>
             <input type="text" class="form-control" name="inputProdName"
-                   value="<?= $this->productDetails['ProductName'] ?>">
+                   value="<?= $this->productDetails['ProductName'] ?>" required>
         </div>
         <div class="col-md-6">
             <?php if ($this->productDetails['Type'] == "Physical") { ?>
                 <label for="inputProdHostname" class="form-label">Hostname</label>
                 <input type="text" class="form-control" name="inputProdHostname"
-                       value="<?= $this->productDetails['Hostname'] ?>">
+                       value="<?= $this->productDetails['Hostname'] ?>" required>
             <?php } elseif ($this->productDetails['Type'] == "Digital") { ?>
                 <label for="inputProdExpDate" class="form-label">Expiration date</label>
                 <input type="text" class="form-control" name="inputProdExpDate"
-                       value="<?= $this->productDetails['ExpDate'] ?>">
+                       value="<?= $this->productDetails['ExpDate'] ?>" required>
             <?php } ?>
         </div>
         <div class="col-md-6">
             <label for="inputProdManufacturer" class="form-label">Manufacturer</label>
             <input type="text" class="form-control" name="inputProdManufacturer"
-                   value="<?= $this->productDetails['Manufacturer'] ?>">
+                   value="<?= $this->productDetails['Manufacturer'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputProdModelNo" class="form-label">Model N°</label>
             <input type="text" class="form-control" name="inputProdModelNo"
-                   value="<?= $this->productDetails['ModelNo'] ?>">
+                   value="<?= $this->productDetails['ModelNo'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputProdSerialNo" class="form-label">Serial N°</label>
             <input type="text" class="form-control" name="inputProdSerialNo"
-                   value="<?= $this->productDetails['SerialNo'] ?>">
+                   value="<?= $this->productDetails['SerialNo'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputProdPurchaseDate" class="form-label">Purchase Date</label>
             <input type="text" class="form-control" name="inputProdPurchaseDate"
-                   value="<?= $this->productDetails['PurchaseDate'] ?>">
-        </div>
-        <div class="col-md-6">
-            <label for="inputProdBillPath" class="form-label">Bill path</label>
-            <input type="text" class="form-control" name="inputProdBillPath"
-                   value="<?= $this->productDetails['BillPath'] ?>">
+                   value="<?= $this->productDetails['PurchaseDate'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputProdType" class="form-label">Type</label>
@@ -53,7 +48,7 @@
                    value="<?= $this->productDetails['Type'] ?>">
         </div>
         <?php if ($this->productDetails['Type'] == "Physical") { ?>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <label for="inputProdSite" class="form-label">Site</label>
                 <select class="form-select" name="inputProdSite" required>
                     <option selected

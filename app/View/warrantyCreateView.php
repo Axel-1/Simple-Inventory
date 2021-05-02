@@ -8,11 +8,11 @@
           method="POST" class="row g-3">
         <div class="col-md-6">
             <label for="inputWarrantyName" class="form-label">Name</label>
-            <input type="text" class="form-control" name="inputWarrantyName">
+            <input type="text" class="form-control" name="inputWarrantyName" required>
         </div>
         <div class="col-md-6">
             <label for="inputWarrantyExpDate" class="form-label">Expiration Date</label>
-            <input type="text" class="form-control" name="inputWarrantyExpDate">
+            <input type="text" class="form-control" name="inputWarrantyExpDate" required>
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Save</button>

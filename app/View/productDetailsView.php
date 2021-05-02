@@ -32,7 +32,6 @@
                                 </li>
                                 <li class="list-group-item"><b>Purchase
                                         date</b>: <?= $this->productDetails['PurchaseDate'] ?></li>
-                                <li class="list-group-item"><b>Bill</b>: <?= $this->productDetails['BillPath'] ?></li>
                             </ul>
                         </div>
                     </div>
@@ -42,6 +41,8 @@
                        class="btn btn-primary">Edit</a>
                     <a href="?action=productDelete&productID=<?= $this->productDetails['ProductID'] ?>"
                        class="btn btn-danger">Delete</a>
+                    <a href="<?= $this->productDetails['BillPath'] ?>"
+                       class="btn btn-dark"><i class="bi bi-cloud-download"></i> Bill</a>
                 </div>
             </div>
         </div>

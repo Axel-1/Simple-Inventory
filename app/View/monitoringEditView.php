@@ -20,7 +20,7 @@
             <div class="col-md-6">
                 <label for="inputMonitIP" class="form-label">IP</label>
                 <input type="text" class="form-control" name="inputMonitIP"
-                       value="<?= $this->monitoringDetails['IP'] ?>">
+                       value="<?= $this->monitoringDetails['IP'] ?>" required>
             </div>
             <div class="col-md-6">
                 <label for="inputMonitLastPing" class="form-label">Last Ping</label>

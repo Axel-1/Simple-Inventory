@@ -117,7 +117,6 @@ class ProductController
             $this->product->setModelNo($_POST["inputProdModelNo"]);
             $this->product->setSerialNo($_POST["inputProdSerialNo"]);
             $this->product->setPurchaseDate(date_create($_POST["inputProdPurchaseDate"]));
-            $this->product->setBillPath($_POST["inputProdBillPath"]);
             $this->product->setSite(SiteDAO::getSiteByID($_POST["inputProdSite"]));
         } elseif ($this->product instanceof DigitalProduct) {
             $this->product->setProductName($_POST["inputProdName"]);
@@ -126,7 +125,6 @@ class ProductController
             $this->product->setModelNo($_POST["inputProdModelNo"]);
             $this->product->setSerialNo($_POST["inputProdSerialNo"]);
             $this->product->setPurchaseDate(date_create($_POST["inputProdPurchaseDate"]));
-            $this->product->setBillPath($_POST["inputProdBillPath"]);
         }
 
         // Saving change in the database

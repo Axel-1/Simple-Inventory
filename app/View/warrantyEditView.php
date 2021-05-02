@@ -9,12 +9,12 @@
         <div class="col-md-6">
             <label for="inputWarrantyName" class="form-label">Name</label>
             <input type="text" class="form-control" name="inputWarrantyName"
-                   value="<?= $this->warrantyDetails['WarrantyName'] ?>">
+                   value="<?= $this->warrantyDetails['WarrantyName'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputWarrantyExpDate" class="form-label">Expiration Date</label>
             <input type="text" class="form-control" name="inputWarrantyExpDate"
-                   value="<?= $this->warrantyDetails['ExpDate'] ?>">
+                   value="<?= $this->warrantyDetails['ExpDate'] ?>" required>
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Save</button>

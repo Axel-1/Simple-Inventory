@@ -8,7 +8,7 @@
           method="POST" class="row g-3">
         <div class="col-md-6">
             <label for="inputMonitIP" class="form-label">IP</label>
-            <input type="text" class="form-control" name="inputMonitIP">
+            <input type="text" class="form-control" name="inputMonitIP" required>
         </div>
         <div class="col-md-6">
             <label for="inputMonitLastPing" class="form-label">Last Ping</label>

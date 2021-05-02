@@ -47,7 +47,7 @@ class ProductCreateController
                 $_POST["inputProdModelNo"],
                 $_POST["inputProdSerialNo"],
                 date_create($_POST["inputProdPurchaseDate"]),
-                $_POST["inputProdBillPath"],
+                "upload/" . $_POST["inputProdSerialNo"] . ".pdf",
                 $_POST["inputProdHostname"],
                 SiteDAO::getSiteByID($_POST["inputProdSite"]))->getProductID();
         } elseif ($this->productType == "Digital") {
@@ -56,9 +56,11 @@ class ProductCreateController
                 $_POST["inputProdModelNo"],
                 $_POST["inputProdSerialNo"],
                 date_create($_POST["inputProdPurchaseDate"]),
-                $_POST["inputProdBillPath"],
+                "upload/" . $_POST["inputProdSerialNo"] . ".pdf",
                 date_create($_POST["inputProdExpDate"]))->getProductID();
         }
+
+        move_uploaded_file($_FILES['inputProdBill']['tmp_name'], "upload/" . $_POST["inputProdSerialNo"] . ".pdf");
 
         // Reloading products details
         header("Location: ?action=productDetails&productID=" . $productID);

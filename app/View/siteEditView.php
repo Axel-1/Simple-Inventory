@@ -9,22 +9,22 @@
         <div class="col-md-6">
             <label for="inputSiteName" class="form-label">Name</label>
             <input type="text" class="form-control" name="inputSiteName"
-                   value="<?= $this->siteDetails['SiteName'] ?>">
+                   value="<?= $this->siteDetails['SiteName'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputSiteAddress" class="form-label">Address</label>
             <input type="text" class="form-control" name="inputSiteStreet"
-                   value="<?= $this->siteDetails['Street'] ?>">
+                   value="<?= $this->siteDetails['Street'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputSiteZip" class="form-label">Zip code</label>
             <input type="text" class="form-control" name="inputSiteZip"
-                   value="<?= $this->siteDetails['ZipCode'] ?>">
+                   value="<?= $this->siteDetails['ZipCode'] ?>" required>
         </div>
         <div class="col-md-6">
             <label for="inputSiteCity" class="form-label">City</label>
             <input type="text" class="form-control" name="inputSiteCity"
-                   value="<?= $this->siteDetails['City'] ?>">
+                   value="<?= $this->siteDetails['City'] ?>" required>
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Save</button>
