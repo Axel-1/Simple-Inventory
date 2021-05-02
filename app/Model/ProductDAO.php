@@ -36,6 +36,20 @@ class ProductDAO extends DAO
         return $productCollection;
     }
 
+    public static function getProductBySerialNo(string $productSerialNo): array
+    {
+        $productCollection = array();
+        $rs = self::prepare("SELECT * FROM Produit WHERE Num_serie = :productSerialNo", array(":productSerialNo" => $productSerialNo));
+        foreach ($rs as $key => $val) {
+            if ($val['Type'] == "p") {
+                $productCollection[$val['ID_produit']] = new PhysicalProduct($val['ID_produit'], $val['Nom_produit'], $val['Fabricant'], $val['Num_modele'], $val['Num_serie'], date_create($val['Date_achat']), $val['Chemin_facture'], $val['Nom_hote'], WarrantyDAO::getWarrantyByProductID($val['ID_produit']), SiteDAO::getSiteByID($val['ID_site']), ($val['ID_supervision'] == null ? null : MonitoringDAO::getMonitoringByID($val['ID_supervision'])));
+            } elseif ($val['Type'] == "d") {
+                $productCollection[$val['ID_produit']] = new DigitalProduct($val['ID_produit'], $val['Nom_produit'], $val['Fabricant'], $val['Num_modele'], $val['Num_serie'], date_create($val['Date_achat']), $val['Chemin_facture'], date_create($val['Date_expiration']));
+            }
+        }
+        return $productCollection;
+    }
+
     public static function getMonitoredProducts(): array
     {
         $productCollection = array();

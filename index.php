@@ -16,7 +16,10 @@ if (isset($_GET['action'])) {
 if (AuthenticationController::getInstance()->isLoggedIn()) {
     switch ($action) {
         case "productList" :
-            ProductListController::getInstance()->render();
+            ProductListController::getInstance()->all();
+            break;
+        case "productSearch" :
+            ProductListController::getInstance()->searchBySerial();
             break;
         case "siteList" :
             SiteListController::getInstance()->render();

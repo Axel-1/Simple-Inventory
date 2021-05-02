@@ -20,7 +20,10 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <form class="d-inline w-100" action="?action=productSearch" method="post">
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search by serial number"
+               aria-label="Search" name="inputProdSearch">
+    </form>
     <ul class="navbar-nav ps-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="?action=userEdit&userID=<?= $_SESSION['userID'] ?>">Logged in as
