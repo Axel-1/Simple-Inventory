@@ -42,27 +42,30 @@ class ProductCreateController
     public function save(): void
     {
         if ($this->productType == "Physical") {
-            $productID = ProductDAO::createPhysicalProduct($_POST["inputProdName"],
+            $product = ProductDAO::createPhysicalProduct($_POST["inputProdName"],
                 $_POST["inputProdManufacturer"],
                 $_POST["inputProdModelNo"],
                 $_POST["inputProdSerialNo"],
                 date_create($_POST["inputProdPurchaseDate"]),
-                "upload/" . $_POST["inputProdSerialNo"] . ".pdf",
+                "",
                 $_POST["inputProdHostname"],
-                SiteDAO::getSiteByID($_POST["inputProdSite"]))->getProductID();
+                SiteDAO::getSiteByID($_POST["inputProdSite"]));
         } elseif ($this->productType == "Digital") {
-            $productID = ProductDAO::createDigitalProduct($_POST["inputProdName"],
+            $product = ProductDAO::createDigitalProduct($_POST["inputProdName"],
                 $_POST["inputProdManufacturer"],
                 $_POST["inputProdModelNo"],
                 $_POST["inputProdSerialNo"],
                 date_create($_POST["inputProdPurchaseDate"]),
-                "upload/" . $_POST["inputProdSerialNo"] . ".pdf",
-                date_create($_POST["inputProdExpDate"]))->getProductID();
+                "",
+                date_create($_POST["inputProdExpDate"]));
         }
 
-        move_uploaded_file($_FILES['inputProdBill']['tmp_name'], "upload/" . $_POST["inputProdSerialNo"] . ".pdf");
+        // Saving PDF file
+        move_uploaded_file($_FILES['inputProdBill']['tmp_name'], "upload/" . $product->getProductID() . ".pdf");
+        $product->setBillPath("upload/" . $product->getProductID() . ".pdf");
+        $product->persist();
 
         // Reloading products details
-        header("Location: ?action=productDetails&productID=" . $productID);
+        header("Location: ?action=productDetails&productID=" . $product->getProductID());
     }
 }
