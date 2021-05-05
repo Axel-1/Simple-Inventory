@@ -8,7 +8,6 @@ use App\Model\SiteDAO;
 
 class SiteListController
 {
-    private static SiteListController $_instance;
     private array $siteList;
     private string $activePage;
 
@@ -27,10 +26,7 @@ class SiteListController
 
     public static function getInstance(): SiteListController
     {
-        if (!isset(self::$_instance)) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
+        return new self();
     }
 
     public function render()

@@ -96,3 +96,27 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
+.shadow-button-primary {
+    box-shadow: 0 .3rem 1rem rgba(13, 110, 253, .6);
+}
+
+.shadow-button-success {
+    box-shadow: 0 .2rem 1rem rgba(25, 135, 84, .5);
+}
+
+.shadow-button-danger {
+    box-shadow: 0 .2rem 1rem rgba(220, 53, 69, .5);
+}
+
+.shadow-primary {
+    box-shadow: 0 .3rem 1rem rgba(13, 110, 253, .3);
+}
+
+.shadow-success {
+    box-shadow: 0 .3rem 1rem rgba(25, 135, 84, .3);
+}
+
+.shadow-danger {
+    box-shadow: 0 .3rem 1rem rgba(220, 53, 69, .3);
+}

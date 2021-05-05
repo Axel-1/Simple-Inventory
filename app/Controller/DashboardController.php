@@ -9,7 +9,6 @@ use App\Model\SiteDAO;
 
 class DashboardController
 {
-    private static DashboardController $_instance;
     private int $productCount;
     private int $monitProductCount;
     private int $productDownCount;
@@ -55,10 +54,7 @@ class DashboardController
 
     public static function getInstance(): DashboardController
     {
-        if (!isset(self::$_instance)) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
+        return new self();
     }
 
     public function render()

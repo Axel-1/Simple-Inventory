@@ -8,7 +8,6 @@ use App\Model\ProductDAO;
 
 class MonitoringListController
 {
-    private static MonitoringListController $_instance;
     private array $monitoringList;
     private string $activePage;
 
@@ -30,10 +29,7 @@ class MonitoringListController
 
     public static function getInstance(): MonitoringListController
     {
-        if (!isset(self::$_instance)) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
+        return new self();
     }
 
     public function render()

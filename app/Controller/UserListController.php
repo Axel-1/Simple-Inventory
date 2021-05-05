@@ -27,7 +27,7 @@ class UserListController
 
     public static function getInstance(): UserListController
     {
-        return new self;
+        return new self();
     }
 
     public function render()

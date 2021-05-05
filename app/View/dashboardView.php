@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row mb-4">
         <div class="col">
-            <div class="card border-primary">
+            <div class="card border-white shadow-primary">
                 <div class="card-body">
                     <h1 class="card-title text-center"><?= $this->productCount ?></h1>
                     <p class="card-text text-center">Products in inventory</p>
@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card border-success">
+            <div class="card border-white shadow-success">
                 <div class="card-body">
                     <h1 class="card-title text-center"><?= $this->monitProductCount ?></h1>
                     <p class="card-text text-center">Products monitored</p>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card border-danger">
+            <div class="card border-white shadow-danger">
                 <div class="card-body">
                     <h1 class="card-title text-center"><?= $this->productDownCount ?></h1>
                     <p class="card-text text-center">Products that are not responding</p>
